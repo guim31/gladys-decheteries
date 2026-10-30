@@ -1,0 +1,71 @@
+{
+  "total_count": 6,
+  "results": [
+    {
+      "name": "Déchèterie - Wacken",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684044/decheterie-wacken",
+      "address": "Rue de l'Église rouge 67000 Strasbourg France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"11:45\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"12:00\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.74695326695589,
+        "lat": 48.5959466937142
+      }
+    },
+    {
+      "name": "Déchèterie - Meinau",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684038/decheterie-meinau",
+      "address": "Rue de la Fédération 67000 Strasbourg France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"11:45\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"12:00\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.74153227082734,
+        "lat": 48.5643437663691
+      }
+    },
+    {
+      "name": "Déchèterie - Koenigshoffen",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684036/decheterie-koenigshoffen",
+      "address": "Rue de l'Abbé Lemire 67200 Strasbourg France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"11:45\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"12:00\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.72502584897935,
+        "lat": 48.5770301470415
+      }
+    },
+    {
+      "name": "Déchèterie - Ostwald - La Vigie",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684040/decheterie-ostwald-la-vigie",
+      "address": "Rue Théodore Monod 67540 Ostwald France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"11:45\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"12:00\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.69349504710453,
+        "lat": 48.538672831113
+      }
+    },
+    {
+      "name": "Déchèterie - Robertsau",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684042/decheterie-robertsau",
+      "address": "Rue de Lübeck 67000 Strasbourg France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"11:45\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"1\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"3\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"4\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}, {\"endHour\": \"12:00\", \"dayOfWeek\": \"6\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.7933453262355,
+        "lat": 48.5914881040041
+      }
+    },
+    {
+      "name": "Déchèterie - La Wantzenau",
+      "friendlyurl": "https://www.strasbourg.eu/lieu/-/entity/id/684034/decheterie-la-wantzenau",
+      "address": "Rue Georges Cuvier 67610 La Wantzenau France",
+      "periods": "[{\"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:45\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:45\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires habituels\"}}, {\"endDate\": \"2021-05-18\", \"alwaysOpen\": 0, \"schedules\": [{\"endHour\": \"18:30\", \"dayOfWeek\": \"0\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"2\", \"startHour\": \"08:00\"}, {\"endHour\": \"18:30\", \"dayOfWeek\": \"5\", \"startHour\": \"08:00\"}], \"periodName\": {\"fr_FR\": \"Horaires suite à la mise en place du couvre-feu à 19h\"}, \"startDate\": \"2020-06-08\"}]",
+      "exceptionalschedule": null,
+      "point_geo": {
+        "lon": 7.8127554998866,
+        "lat": 48.6671338096972
+      }
+    }
+  ]
+}

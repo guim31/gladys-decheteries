@@ -1,0 +1,838 @@
+{
+  "total_count": 38,
+  "results": [
+    {
+      "gid": "27",
+      "nom": "CR mobile Place des Martyrs de la resistance",
+      "adresse": "Place des Martyrs de la Résistance, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5858683,
+        "lat": 44.8435232
+      }
+    },
+    {
+      "gid": "24",
+      "nom": "CR mobile Place Alcala de Hénarès (Forum)",
+      "adresse": ", 33400 Talence",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5904633,
+        "lat": 44.812339
+      }
+    },
+    {
+      "gid": "25",
+      "nom": "CR mobile Place Aristide Briand",
+      "adresse": "Place Aristide Briand, 33400 Talence",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5845961,
+        "lat": 44.8205516
+      }
+    },
+    {
+      "gid": "32",
+      "nom": "CR mobile Promenade du lac",
+      "adresse": "Promenade Du Lac, 33300 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.570334,
+        "lat": 44.8794131
+      }
+    },
+    {
+      "gid": "29",
+      "nom": "CR mobile Place Germaine Tillion",
+      "adresse": "Place Germaine Tillon, 33200 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.6152944,
+        "lat": 44.8513387
+      }
+    },
+    {
+      "gid": "31",
+      "nom": "CR mobile Place Picard",
+      "adresse": "Place Picard, 33300 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5713363,
+        "lat": 44.855397
+      }
+    },
+    {
+      "gid": "26",
+      "nom": "CR mobile Place Canteloup",
+      "adresse": "Place Canteloup, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5657972,
+        "lat": 44.8338951
+      }
+    },
+    {
+      "gid": "28",
+      "nom": "CR mobile Place Gaviniès",
+      "adresse": "Place Gavinies, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5941651,
+        "lat": 44.8331081
+      }
+    },
+    {
+      "gid": "30",
+      "nom": "CR mobile Place Nansouty",
+      "adresse": ", 33800 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5722313,
+        "lat": 44.8200791
+      }
+    },
+    {
+      "gid": "23",
+      "nom": "CR mobile Piscine Stéhélin",
+      "adresse": "200-288 Avenue du Maréchal de Lattre de Tassigny, 33200 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.6204291,
+        "lat": 44.8569884
+      }
+    },
+    {
+      "gid": "18",
+      "nom": "CR mobile Allée des coteaux",
+      "adresse": "Allée des Coteaux, 33100 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5428574,
+        "lat": 44.85678
+      }
+    },
+    {
+      "gid": "20",
+      "nom": "CR mobile Esplanade St Louis",
+      "adresse": "Impasse Saint-Louis, 33300 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5672843,
+        "lat": 44.8627937
+      }
+    },
+    {
+      "gid": "12",
+      "nom": "CR Gutenberg",
+      "adresse": "17 Rue Gutenberg, 33600 Pessac",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6476384,
+        "lat": 44.786408
+      }
+    },
+    {
+      "gid": "13",
+      "nom": "CR Bruges",
+      "adresse": "Rue André Sarreau, 33520 Bruges",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6205777,
+        "lat": 44.8891071
+      }
+    },
+    {
+      "gid": "14",
+      "nom": "CR Gradignan",
+      "adresse": "Allée de Mégévie, 33170 Gradignan",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.641265,
+        "lat": 44.7785084
+      }
+    },
+    {
+      "gid": "6",
+      "nom": "CR Bordeaux Bastide",
+      "adresse": "45 Quai Deschamps, 33100 Bordeaux",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.5515032,
+        "lat": 44.8339024
+      }
+    },
+    {
+      "gid": "38",
+      "nom": "CR Floirac",
+      "adresse": "Avenue Marcel Paul, 33270 Floirac",
+      "acceptes": [
+        "Pour connaître la liste des déchets acceptés, consulter l'adresse https://www.sivom-rivedroite.fr/collectes/175524/equipements/138694/regles-de-collecte/"
+      ],
+      "horaires_osm": "Mo 09:15-12:25,14:00-17:30; Tu 09:15-12:25,14:00-17:30; We 09:15-12:25,14:00-17:30; Th 09:15-12:25,14:00-17:30; Fr 09:15-12:25,14:00-17:30; Sa 09:15-12:25,14:00-17:30; Su 09:15-12:25,14:00-17:30; PH off",
+      "geo_point_2d": {
+        "lon": -0.526406,
+        "lat": 44.8239459
+      }
+    },
+    {
+      "gid": "11",
+      "nom": "CR Ambares et Lagrave",
+      "adresse": "Avenue Jules Ferry, 33440 Ambarès-et-Lagrave",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.5048881,
+        "lat": 44.9327508
+      }
+    },
+    {
+      "gid": "36",
+      "nom": "CR mobile Place Saint-Projet",
+      "adresse": "Place Saint-Projet, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5741444,
+        "lat": 44.838764
+      }
+    },
+    {
+      "gid": "37",
+      "nom": "CR mobile Place Saint-Pierre",
+      "adresse": "Place Saint-Pierre, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5704416,
+        "lat": 44.839886
+      }
+    },
+    {
+      "gid": "34",
+      "nom": "CR mobile Porte Cailhau",
+      "adresse": "Place du Palais, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5684292,
+        "lat": 44.8387782
+      }
+    },
+    {
+      "gid": "35",
+      "nom": "CR mobile Place Fernand Lafargue",
+      "adresse": "Place Fernand Lafargue, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5718483,
+        "lat": 44.8371109
+      }
+    },
+    {
+      "gid": "1",
+      "nom": "CR Blanquefort",
+      "adresse": "Avenue du 11 Novembre, 33290 Blanquefort",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6228384,
+        "lat": 44.9274952
+      }
+    },
+    {
+      "gid": "2",
+      "nom": "CR Merignac",
+      "adresse": "155 Avenue des Marronniers, 33700 Mérignac",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6894145,
+        "lat": 44.8464709
+      }
+    },
+    {
+      "gid": "3",
+      "nom": "CR Bassens EXT",
+      "adresse": "Rue Franklin, 33530 Bassens",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa off; Su off; PH off",
+      "geo_point_2d": {
+        "lon": -0.5259378,
+        "lat": 44.895873
+      }
+    },
+    {
+      "gid": "4",
+      "nom": "CR Eysines",
+      "adresse": "D1215, 33320 Eysines",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6591009,
+        "lat": 44.8764388
+      }
+    },
+    {
+      "gid": "5",
+      "nom": "CR Le Taillan",
+      "adresse": "Route de Saint-Aubin, 33320 Le Taillan-Médoc",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.7041549,
+        "lat": 44.9082165
+      }
+    },
+    {
+      "gid": "7",
+      "nom": "CR Saint-Medard-en-Jalles",
+      "adresse": "Avenue de Touban, 33160 Saint-Médard-en-Jalles",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "DECHETS_VERTS",
+        "CARTON",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.7146128,
+        "lat": 44.8581518
+      }
+    },
+    {
+      "gid": "17",
+      "nom": "Déchetterie Carle Vernet",
+      "adresse": "Rue Carle Vernet, 33800 Bordeaux",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "CARTON",
+        "METAUX",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS"
+      ],
+      "horaires_osm": "Mo off; Tu off; We off; Th off; Fr off; Sa 07:00-12:30,13:15-14:50; Su 07:00-12:30,13:15-14:50; PH off",
+      "geo_point_2d": {
+        "lon": -0.5522591,
+        "lat": 44.8184995
+      }
+    },
+    {
+      "gid": "8",
+      "nom": "CR Surcouf",
+      "adresse": "Rue Surcouf, 33000 Bordeaux",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 08:30-12:30,13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.5548506,
+        "lat": 44.8781775
+      }
+    },
+    {
+      "gid": "10",
+      "nom": "CR Pessac",
+      "adresse": "46 Chemin de la Princesse, 33600 Pessac",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.6851428,
+        "lat": 44.8098866
+      }
+    },
+    {
+      "gid": "21",
+      "nom": "CR mobile Parvis des frères Pouyanne",
+      "adresse": ", 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5778198,
+        "lat": 44.8251117
+      }
+    },
+    {
+      "gid": "15",
+      "nom": "CR Villenave d'Ornon",
+      "adresse": "Chemin de Galgon, 33140 Villenave-d'Ornon",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES",
+        "LIVRES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.54061,
+        "lat": 44.7833594
+      }
+    },
+    {
+      "gid": "16",
+      "nom": "CR Bassens",
+      "adresse": "Rue Franklin, 33530 Bassens",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.5259378,
+        "lat": 44.895873
+      }
+    },
+    {
+      "gid": "33",
+      "nom": "CR mobile Salle Jean Dauguet",
+      "adresse": "15 Rue Ferdinand Palau, 33100 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5455327,
+        "lat": 44.842358
+      }
+    },
+    {
+      "gid": "19",
+      "nom": "CR mobile Bègles",
+      "adresse": "Place du Bicentenaire, 33130 Bègles",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.5481807,
+        "lat": 44.8070447
+      }
+    },
+    {
+      "gid": "9",
+      "nom": "CR Ambes",
+      "adresse": "16 Rue Jean Mermoz, 33810 Ambès",
+      "acceptes": [
+        "TOUT_VENANT_INCINERABLE",
+        "TOUT_VENANT_NON_INCINERABLE",
+        "DECHETS_VERTS",
+        "BOIS",
+        "GRAVAT",
+        "CARTON",
+        "METAUX",
+        "VERRE",
+        "PILES",
+        "BATTERIES",
+        "HUILES_DE_VIDANGE",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES"
+      ],
+      "horaires_osm": "Mo 08:30-12:30,13:15-18:00; Tu 13:15-18:00; We 08:30-12:30,13:15-18:00; Th 08:30-12:30,13:15-18:00; Fr 08:30-12:30,13:15-18:00; Sa 08:30-12:30,13:15-18:00; Su 08:30-12:30,13:15-18:00; PH off",
+      "geo_point_2d": {
+        "lon": -0.5375222,
+        "lat": 45.0098876
+      }
+    },
+    {
+      "gid": "22",
+      "nom": "CR mobile Parvis Eglise Saint Augustin",
+      "adresse": "Place de l'Église Saint-Augustin, 33000 Bordeaux",
+      "acceptes": [
+        "LIVRES",
+        "BOIS",
+        "METAUX",
+        "CARTON",
+        "DECHETS_DELEMENTS_DAMEUBLEMENT",
+        "DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES",
+        "ECRANS_TELEVISEURS",
+        "DECHETS_DIFFUS_SPECIFIQUES"
+      ],
+      "horaires_osm": "PH off",
+      "geo_point_2d": {
+        "lon": -0.6110804,
+        "lat": 44.8327191
+      }
+    }
+  ]
+}
