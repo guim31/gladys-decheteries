@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-30
+
 ### Added
 
 - The recycling centres (déchèteries) of four French metropolitan areas, from
@@ -27,3 +29,6 @@ the notes of the version's GitHub Release.
   the number open.
 - Dashboard widget: one row per site, open until when or next opening.
 - Texts and documentation in English, French, German and Spanish.
+
+[Unreleased]: https://github.com/guim31/gladys-decheteries/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/guim31/gladys-decheteries/releases/tag/v1.0.0
