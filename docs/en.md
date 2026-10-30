@@ -1,61 +1,143 @@
-# Demo Devices Template
+# Déchèteries
 
-This is the user documentation of the integration. Gladys re-hosts this file
-and shows a permanent **Documentation** link to it in the Configuration screen
-(in the user's language, with English as the fallback) — it is when
-configuring that the user needs it most. Keep the short onboarding hints in
-the `section` blocks of the manifest `config_schema`; put the long
-step-by-step (screenshots, troubleshooting…) here.
+The **recycling centres (déchèteries) of French metropolitan areas** in Gladys: open now or not,
+closing time, next opening, today's hours, and the accepted waste where the area publishes it.
+The hours come from the **open data** of the metropolitan areas. **No account, no key.**
+
+> Hours are the ones the areas publish: check with the operator before a long trip, especially on a
+> public holiday or after a change of season.
+
+Unofficial integration, not affiliated with the metropolitan areas nor with the operators. Tested
+against the real answers of the four sources (2026-10-30), not yet on a real Gladys instance:
+feedback welcome.
 
 ## What you get
 
-Six demo devices show up after installation: a weather station (real data
-from Open-Meteo), a switch, a dimmable light, a smart plug with power
-metering, a motion sensor and a camera.
+- A **device per recycling centre** you add: open now, today's hours, closing time, next opening.
+- In Bordeaux, the **accepted waste** as a text, and five yes/no features: green waste, rubble,
+  wood, electrical appliances, bulky waste.
+- A **widget** "Recycling centres": your sites on one row each, green when open, orange in the last
+  half-hour, red when closed.
+- Three **scene triggers**: a site opens, a site closes soon (30 minutes by default), a site closes.
+- A **scene action** "Is the recycling centre open?": your sites in a sentence, with the closing time
+  or the next opening.
+
+## Requirements
+
+- Gladys Assistant **5.3.0** or later.
+- Internet access from Gladys: the sources are public open data portals.
+- For the nearest sites: the location of the house set in Gladys (**Settings → Houses**).
+
+## Installation
+
+1. In Gladys, open **Integrations → Install from GitHub**.
+2. Paste `https://github.com/guim31/gladys-decheteries` and confirm.
+3. Gladys asks to share the location of the house: it is only used to find the nearest sites, and
+   never leaves your Gladys.
 
 ## Configuration
 
-1. Open the **Configuration** tab of the integration.
-2. Set the **latitude** and **longitude** the demo weather station should
-   observe (they default to Paris), and pick your temperature unit.
-   The **refresh interval** sets how often the weather station and the
-   plug's power are read: every 5 minutes by default, every minute at most.
-3. Save: the devices appear in the **Discovery** tab, ready to be added.
+### Settings
 
-The **Prefer the local connection** toggle drives the demo plug: it reports
-the channel it actually uses as a badge (local or cloud), with an orange dot
-when it runs degraded (local refused, cloud fallback).
+- **Metropolitan areas**: every recycling centre with hours of the areas ticked is offered.
+  Available today: Strasbourg (Eurométropole), Toulouse Métropole (Decoset), Bordeaux Métropole, Tours
+  Métropole Val de Loire.
+- **Nearest recycling centres**: also offer this many sites nearest to the house (3 by default, 0 to
+  turn off), within the **maximum distance** (30 km as the crow flies by default). Nothing to tick if
+  you live in one of the four areas.
+- **Closing soon (minutes)**: when the "Recycling centre closes soon" trigger fires (30 by default).
+- **Language of names and messages**: French by default. Feature names are fixed when a device is
+  added; the texts follow the language at once.
 
-## Actions
+### Adding recycling centres
 
-- **Test the weather provider** — performs a live request to Open-Meteo and
-  shows the current temperature and humidity under the button.
-- **Identify a device** — pick one of your devices in the list and it will
-  signal itself (the demo light "blinks" in the logs).
+Save the configuration: the sites appear in the **Discover** tab of the integration. Add the ones you
+use. A site added stays watched even if you untick its area.
 
-## Scenes
+### Checking
 
-The integration adds its own cards to the scene editor (Gladys 5.1 or
-later), under the **Integrations** category:
+The **Status** button lists the areas read, the number of sites with hours, the sites offered, the
+last read and the errors.
 
-- **Motion detected** (trigger) — starts the scene when a demo motion sensor
-  sees something move. Optionally pick the sensor and what moved (person,
-  animal); left empty, any detection matches. The following actions can
-  read what moved with `{{triggerEvent.data.target}}`.
-- **Identify a device** (action) — makes the chosen device signal itself.
-  It returns whether the device could signal itself, so the following
-  actions can depend on it.
+## Devices
 
-## Dashboard
+| Feature             | Type        | Value                                                         |
+| ------------------- | ----------- | ------------------------------------------------------------- |
+| Open now            | binary      | 1 open, 0 closed; no value when the hours cannot be read      |
+| Today's hours       | text        | "09:00–12:00, 14:00–18:00", "Closed today", "Public holiday…" |
+| Closing time        | text        | "18:00" while open, "Closed" otherwise                        |
+| Next opening        | text        | "tomorrow at 09:00", "Sunday at 10:00"                        |
+| Accepted waste      | text        | Bordeaux only: "green waste, rubble, wood…"                   |
+| Accepts green waste | binary (×5) | Bordeaux only: green waste, rubble, wood, electrical, bulky   |
 
-Add the **Demo status** widget to a dashboard: it shows the live
-temperature of the weather station and the power of the office plug, the
-connection the plug currently uses (orange when degraded) and the observed
-location. Its **Identify the light** button makes the demo light signal
-itself.
+The values are computed every minute by the integration, without any request.
+
+## Dashboard widget
+
+Add the **Recycling centres** widget to a dashboard: one row per site (10 at most), with its name in
+Gladys and "open until 18:00", "closes in 15 min" or "closed · opens Sun 10:00". Settings: the sites
+shown (empty: all of them), and **Show the times** to keep only "open" or "closed".
+
+## Scene triggers
+
+- **Recycling centre opens**: variables `site_name`, `closes_at`.
+- **Recycling centre closes soon**: as many minutes before closing as set in the configuration;
+  variables `site_name`, `closes_at`, `minutes_left`.
+- **Recycling centre closes**: variables `site_name`, `next_opening`.
+
+Each trigger can be limited to some sites; empty, any watched site fires it. After a long pause (the
+computer asleep, Gladys stopped), no late trigger is fired.
+
+## Scene action
+
+**Is the recycling centre open?** returns `sentence` ("Déchèterie de Blagnac: open until 12:00."),
+`open_count` and `sites_count`, for the sites picked or all of them. Send the sentence in a message or
+to a speaker, or continue only if `open_count` is 1.
+
+## Scene examples
+
+- Saturday at 9:00, send "Is the recycling centre open?" to your phone before loading the car.
+- When "Recycling centre closes soon" fires and you are not home, a reminder: "closes at 18:00".
+
+## Data and refresh
+
+| Area       | Source                                         | Sites with hours | Holidays        |
+| ---------- | ---------------------------------------------- | ---------------- | --------------- |
+| Strasbourg | data.strasbourg.eu, `lieux_decheteries`        | 6                | not said        |
+| Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm`  | 20               | not said        |
+| Bordeaux   | datahub.bordeaux-metropole.fr, real-time sites | 18               | closed (PH off) |
+| Tours      | data.tours-metropole.fr, recycling centres     | 7                | closed (PH off) |
+
+- Each area is one request **once a day** (an hour later after a failure), only for the areas
+  needed. Open or closed is computed every minute from the hours kept, in the time zone of Paris.
+- Public holidays are computed offline (Alsace-Moselle included). When the source does not say what
+  a site does on a holiday, it is **assumed closed** on 1 January, 1 May and 25 December, and on the
+  other holidays closed unless the site opens on Sundays: the texts say "assumed".
+- Dated exceptions published by Tours (summer hours, works, Christmas Eve) are applied.
+- Licences: Licence Ouverte / Etalab 2.0 for the four sources.
 
 ## Troubleshooting
 
-The integration logs everything it does: check the integration logs from the
-Gladys UI (or `docker logs` on the host) with `LOG_LEVEL=debug` for the full
-detail.
+- **Nothing in the Discover tab**: tick an area, or set the location of the house and keep
+  "Nearest recycling centres" above 0. The **Status** button says which.
+- **"Hours not readable"**: the source published hours this integration does not read (it never
+  guesses): tell us on the forum.
+- **An area is unavailable**: the last hours read are kept; it is tried again an hour later.
+- Logs: in the integration screen, or `LOG_LEVEL=debug` for every read.
+
+## Limitations
+
+- Four metropolitan areas only: the others publish no hours as open data (Rennes gives hours for 1
+  site in 24, Nantes only the waste, Angers a calendar no longer kept up). Tell us about another
+  source.
+- The Toulouse data (Decoset) was last updated in 2022.
+- The mobile recycling centres of Bordeaux publish no hours: they are not offered.
+- The accepted waste is known in Bordeaux only.
+- Access conditions (badge, residents only, vehicle size) are not shown: check with the operator.
+- Developed without visiting the sites: feedback welcome.
+
+## Credits
+
+Data: Eurométropole de Strasbourg, Toulouse Métropole and Decoset, Bordeaux Métropole, Tours
+Métropole Val de Loire (Licence Ouverte). Public holiday rules as in date-holidays. Built on the
+[Gladys integration SDK](https://github.com/GladysAssistant/integration-sdk-js).

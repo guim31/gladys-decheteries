@@ -1,0 +1,265 @@
+{
+  "total_count": 20,
+  "results": [
+    {
+      "equip_uid": "31381-10040200-008",
+      "equip_nom": "DÉCHÈTERIE DE MONTGISCARD",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Chemin des Romains",
+      "adr_codepostal": 31450,
+      "adr_commune": "MONTGISCARD",
+      "equip_ouverture": "Tu-Fr 09:30-12:00,13:30-18:00; Sa,Su 09:30-18:00",
+      "equip_geopoint": {
+        "lon": 1.586687,
+        "lat": 43.45403
+      }
+    },
+    {
+      "equip_uid": "31555-10040200-016",
+      "equip_nom": "DÉCHÈTERIE DU RAMIER",
+      "adr_numero": 6,
+      "adr_nomvoie": "avenue du Grand Ramier",
+      "adr_codepostal": 31400,
+      "adr_commune": "TOULOUSE",
+      "equip_ouverture": "Tu-Sa 09:00-12:00,14:00-18:00",
+      "equip_geopoint": {
+        "lon": 1.43825,
+        "lat": 43.5896
+      }
+    },
+    {
+      "equip_uid": "31202-10040200-003",
+      "equip_nom": "DÉCHÈTERIE DE FRONTON",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Avenue des Vignerons",
+      "adr_codepostal": 31620,
+      "adr_commune": "FRONTON",
+      "equip_ouverture": "Mo-Fr 09:30-12:00,13:30-18:00; Tu off; Sa,Su 09:30-18:00",
+      "equip_geopoint": {
+        "lon": 1.4105175,
+        "lat": 43.8645618
+      }
+    },
+    {
+      "equip_uid": "31212-10040200-004",
+      "equip_nom": "DÉCHÈTERIE DE GARIDECH",
+      "adr_numero": 99999,
+      "adr_nomvoie": "RN88 \"Lagarrigue\"",
+      "adr_codepostal": 31380,
+      "adr_commune": "GARIDECH",
+      "equip_ouverture": "Mo-Fr 09:30-12:00,13:30-18:00; Tu off; Sa,Su 09:30-18:00",
+      "equip_geopoint": {
+        "lon": 1.5685509,
+        "lat": 43.7185365
+      }
+    },
+    {
+      "equip_uid": "31069-10040200-014",
+      "equip_nom": "DÉCHÈTERIE DE BLAGNAC",
+      "adr_numero": 20,
+      "adr_nomvoie": "rue des Orfèvres - ZA de Fontgrasse",
+      "adr_codepostal": 31700,
+      "adr_commune": "BLAGNAC",
+      "equip_ouverture": "Apr-Sep Mo-Th 08:30-12:00,13:30-19:00; Apr-Sep Tu off; Apr-Sep Fr 08:30-12:00,13:30-18:00; Apr-Sep Sa 09:00-18:00; Apr-Sep Su 09:00-13:00; Oct-Mar Mo 09:00-12:00,14:00-19:00; Oct-Mar We-Fr 09:00-12:00,14:00-18:00; Oct-Mar Su 10:00-13:00",
+      "equip_geopoint": {
+        "lon": 1.38253,
+        "lat": 43.6461
+      }
+    },
+    {
+      "equip_uid": "31424-10040200-009",
+      "equip_nom": "DÉCHÈTERIE DE PLAISANCE DU TOUCH",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Rue du Docteur Charcot",
+      "adr_codepostal": 31830,
+      "adr_commune": "PLAISANCE DU TOUCH",
+      "equip_ouverture": "08:30-18:30; Tu off",
+      "equip_geopoint": {
+        "lon": 1.2997547,
+        "lat": 43.5923535
+      }
+    },
+    {
+      "equip_uid": "31150-10040200-002",
+      "equip_nom": "DÉCHÈTERIE DE CORNEBARRIEU",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Chemin Saint James",
+      "adr_codepostal": 31700,
+      "adr_commune": "CORNEBARRIEU",
+      "equip_ouverture": "Mo-Fr 09:30-12:00,13:30-18:00; Th off; Sa,Su 10:00-18:00",
+      "equip_geopoint": {
+        "lon": 1.3250868,
+        "lat": 43.6615625
+      }
+    },
+    {
+      "equip_uid": "31584-10040200-013",
+      "equip_nom": "DÉCHÈTERIE DE VILLEMUR",
+      "adr_numero": 99999,
+      "adr_nomvoie": "ZA Pechnauqié",
+      "adr_codepostal": 31340,
+      "adr_commune": "VILLEMUR",
+      "equip_ouverture": "09:30-12:00,13:30-18:00; Th off",
+      "equip_geopoint": {
+        "lon": 1.499,
+        "lat": 43.8419
+      }
+    },
+    {
+      "equip_uid": "31157-10040200-015",
+      "equip_nom": "DÉCHÈTERIE DE CUGNAUX",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Route de Portet (RD24)",
+      "adr_codepostal": 31270,
+      "adr_commune": "CUGNAUX",
+      "equip_ouverture": "Mo-Sa 08:00-12:00,13:00-18:00; Su 09:00-12:00",
+      "equip_geopoint": {
+        "lon": 1.36749,
+        "lat": 43.532
+      }
+    },
+    {
+      "equip_uid": "31555-10040200-019",
+      "equip_nom": "DÉCHÈTERIE DE MONLONG",
+      "adr_numero": 15,
+      "adr_nomvoie": "rue Paul Rocaché",
+      "adr_codepostal": 31100,
+      "adr_commune": "TOULOUSE",
+      "equip_ouverture": "Tu-Sa 09:00-12:00,14:00-18:00; Su 09:00-12:00",
+      "equip_geopoint": {
+        "lon": 1.39821,
+        "lat": 43.5553
+      }
+    },
+    {
+      "equip_uid": "31254-10040200-006",
+      "equip_nom": "DÉCHÈTERIE DE LABÈGE",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Route de Baziège",
+      "adr_codepostal": 31670,
+      "adr_commune": "LABÈGE",
+      "equip_ouverture": "Mo-Fr 09:30-12:00,13:30-18:00; Tu off; Sa,Su 09:30-17:00",
+      "equip_geopoint": {
+        "lon": 1.5202417,
+        "lat": 43.5444121
+      }
+    },
+    {
+      "equip_uid": "31555-10040200-020",
+      "equip_nom": "DÉCHÈTERIE DE TURLU",
+      "adr_numero": 23,
+      "adr_nomvoie": "chemin de Turlu",
+      "adr_codepostal": 31200,
+      "adr_commune": "TOULOUSE",
+      "equip_ouverture": "Tu-Sa 09:00-12:00,14:00-18:00; Su 09:00-12:00",
+      "equip_geopoint": {
+        "lon": 1.43709,
+        "lat": 43.6575
+      }
+    },
+    {
+      "equip_uid": "31098-10040200-001",
+      "equip_nom": "DÉCHÈTERIE DE CADOURS",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Route de Puyssegur",
+      "adr_codepostal": 31480,
+      "adr_commune": "CADOURS",
+      "equip_ouverture": "Fr,Sa 09:30-12:00,13:30-18:00; Su 14:00-16:30",
+      "equip_geopoint": {
+        "lon": 1.0560304,
+        "lat": 43.7351703
+      }
+    },
+    {
+      "equip_uid": "31561-10040200-007",
+      "equip_nom": "DÉCHÈTERIE DE L'UNION",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Rue d'Ariane",
+      "adr_codepostal": 31240,
+      "adr_commune": "L'UNION",
+      "equip_ouverture": "Tu-Fr 09:30-12:00,13:30-18:00; Sa,Su 09:30-18:00",
+      "equip_geopoint": {
+        "lon": 1.5012549,
+        "lat": 43.6393562
+      }
+    },
+    {
+      "equip_uid": "31555-10040200-017",
+      "equip_nom": "DÉCHÈTERIE DES COSMONAUTES",
+      "adr_numero": null,
+      "adr_nomvoie": "rue des Cosmonautes, ZI de Montaudran",
+      "adr_codepostal": 31400,
+      "adr_commune": "TOULOUSE",
+      "equip_ouverture": "Tu-Sa 09:00-12:00,14:00-18:00",
+      "equip_geopoint": {
+        "lon": 1.49581,
+        "lat": 43.5634
+      }
+    },
+    {
+      "equip_uid": "31232-10040200-005",
+      "equip_nom": "DÉCHÈTERIE DE GRENADE",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Route de Saint Cézert",
+      "adr_codepostal": 31330,
+      "adr_commune": "GRENADE",
+      "equip_ouverture": "09:30-12:00,13:30-18:00; Tu off",
+      "equip_geopoint": {
+        "lon": 1.23821,
+        "lat": 43.7648
+      }
+    },
+    {
+      "equip_uid": "31555-10040200-018",
+      "equip_nom": "DÉCHÈTERIE D'ATLANTA",
+      "adr_numero": 23,
+      "adr_nomvoie": "chemin de Gramont",
+      "adr_codepostal": 31200,
+      "adr_commune": "TOULOUSE",
+      "equip_ouverture": "Tu-Sa 09:00-12:00,14:00-18:00",
+      "equip_geopoint": {
+        "lon": 1.47622,
+        "lat": 43.6323
+      }
+    },
+    {
+      "equip_uid": "31573-10040200-012",
+      "equip_nom": "DÉCHÈTERIE DE VERFEIL",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Rue Gaston Averseng",
+      "adr_codepostal": 31590,
+      "adr_commune": "VERFEIL",
+      "equip_ouverture": "Tu-Su 09:30-12:00,13:30-18:00; Th off",
+      "equip_geopoint": {
+        "lon": 1.65012,
+        "lat": 43.6502
+      }
+    },
+    {
+      "equip_uid": "31446-10040200-010",
+      "equip_nom": "DÉCHÈTERIE DE RAMONVILLE",
+      "adr_numero": 40,
+      "adr_nomvoie": "Avenue de Suisse",
+      "adr_codepostal": 31520,
+      "adr_commune": "RAMONVILLE",
+      "equip_ouverture": "Mo-Fr 09:30-12:30,13:30-18:00; Th off; Sa,Su 09:30-17:00",
+      "equip_geopoint": {
+        "lon": 1.4728204,
+        "lat": 43.5365189
+      }
+    },
+    {
+      "equip_uid": "31467-10040200-011",
+      "equip_nom": "DÉCHÈTERIE DE ST ALBAN",
+      "adr_numero": 99999,
+      "adr_nomvoie": "Impasse Rouquette",
+      "adr_codepostal": 31140,
+      "adr_commune": "ST ALBAN",
+      "equip_ouverture": "09:00-18:00; Tu off",
+      "equip_geopoint": {
+        "lon": 1.3987401,
+        "lat": 43.7086291
+      }
+    }
+  ]
+}

@@ -1,45 +1,63 @@
 // -----------------------------------------------------------------------------
-// Integration configuration.
-//
-// The configuration is filled in by the user in Gladys, from the `config_schema`
-// declared in `gladys-assistant-integration.json`. The SDK fetches it for you
-// (`gladys.getConfig()`) and notifies you of every change through
-// `gladys.onConfigUpdated()`.
-//
-// This module only provides defaults and normalizes the received object, so the
-// rest of the code never has to deal with `undefined`.
+// Integration configuration: defaults (they mirror the `default` values of the
+// manifest `config_schema`, see test/manifest.test.js) and normalization, so
+// the rest of the code never deals with strings, blanks or `undefined`.
 // -----------------------------------------------------------------------------
 
-// Defaults: they MUST stay consistent with the `default` values declared in the
-// `config_schema` of the manifest.
+import { SOURCE_IDS } from './sources.js';
+
+export const LANGUAGES = ['en', 'fr', 'de', 'es'];
+// Sites offered around the house, and how far.
+export const NEAREST_COUNT = { min: 0, max: 10 };
+export const MAX_DISTANCE_KM = { min: 1, max: 200 };
+// Minutes before closing of the closing_soon trigger.
+export const CLOSING_NOTICE = { min: 5, max: 180 };
+
 export const DEFAULT_CONFIG = {
-  latitude: 48.8566, // Paris
-  longitude: 2.3522,
-  unit: 'celsius', // 'celsius' | 'fahrenheit'
-  // Seconds between two reads of the polled sensors. Gladys polls at most once
-  // a minute: slower intervals are applied by skipping polls (see
-  // createPoller in src/devices/index.js).
-  poll_frequency: 300,
-  // Reserved key (NOT in config_schema): because the manifest declares both
-  // 'local' and 'cloud' in its `transports` field, Gladys shows a standard
-  // "Prefer the local connection" toggle and sends the user's choice here.
-  // Read-only for the integration; defaults to true.
-  GLADYS_PREFER_LOCAL: true,
+  areas: [],
+  nearest_count: 3,
+  max_distance: 30,
+  closing_notice: 30,
+  language: 'fr',
 };
 
+/** An integer within its bounds, the default for a blank or a non-number. */
+function integerOf(value, { min, max }, fallback) {
+  const text = String(value ?? '').trim();
+  const number = Number(text.replace(',', '.'));
+  if (text === '' || !Number.isFinite(number)) {
+    return fallback;
+  }
+  return Math.min(max, Math.max(min, Math.round(number)));
+}
+
+/** The ticked areas: an array from the form, tolerating a JSON or comma-separated string. */
+function areasOf(value) {
+  let list = value ?? [];
+  if (typeof list === 'string') {
+    try {
+      list = JSON.parse(list);
+    } catch {
+      list = list.split(',');
+    }
+  }
+  if (!Array.isArray(list)) {
+    return [];
+  }
+  const wanted = list.map((item) => String(item).trim());
+  return SOURCE_IDS.filter((id) => wanted.includes(id));
+}
+
 /**
- * Merge the user config with the defaults.
- * @param {Record<string, unknown>} raw config returned by the SDK
+ * @param {Record<string, unknown>} raw the configuration returned by the SDK
  */
 export function normalizeConfig(raw = {}) {
+  const source = raw && typeof raw === 'object' ? raw : {};
   return {
-    ...DEFAULT_CONFIG,
-    ...raw,
-    // Force the types: config may arrive as strings from a form.
-    latitude: Number(raw.latitude ?? DEFAULT_CONFIG.latitude),
-    longitude: Number(raw.longitude ?? DEFAULT_CONFIG.longitude),
-    poll_frequency: Number(raw.poll_frequency ?? DEFAULT_CONFIG.poll_frequency),
-    // The preference is a boolean; anything but an explicit false means true.
-    GLADYS_PREFER_LOCAL: raw.GLADYS_PREFER_LOCAL !== false,
+    areas: areasOf(source.areas),
+    nearestCount: integerOf(source.nearest_count, NEAREST_COUNT, DEFAULT_CONFIG.nearest_count),
+    maxDistanceKm: integerOf(source.max_distance, MAX_DISTANCE_KM, DEFAULT_CONFIG.max_distance),
+    closingNotice: integerOf(source.closing_notice, CLOSING_NOTICE, DEFAULT_CONFIG.closing_notice),
+    language: LANGUAGES.includes(source.language) ? source.language : DEFAULT_CONFIG.language,
   };
 }

@@ -1,177 +1,541 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "Déchèteries",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Recycling centres of French metropolitan areas: open now, closing time, next opening, waste.",
+    "fr": "Déchèteries des métropoles : ouverte maintenant, fermeture, réouverture, déchets acceptés.",
+    "de": "Wertstoffhöfe französischer Metropolen: jetzt geöffnet, Schließzeit, nächste Öffnung, Abfälle.",
+    "es": "Puntos limpios de metrópolis francesas: abierto ahora, cierre, reapertura, residuos aceptados."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
-  "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "docker_image": "ghcr.io/guim31/gladys-decheteries:1.0.0",
+  "gladys_version": ">=5.3.0",
+  "cover_image": "https://raw.githubusercontent.com/guim31/gladys-decheteries/main/cover.png",
+  "categories": ["services", "environment"],
+  "transports": ["cloud"],
+  "countries": ["FR"],
+  "keywords": [
+    "déchèterie",
+    "déchetterie",
+    "recyclage",
+    "horaires",
+    "Strasbourg",
+    "Toulouse",
+    "Bordeaux",
+    "Tours",
+    "open data"
+  ],
+  "location": true,
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
-      "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+      "label": {
+        "en": "How it works",
+        "fr": "Fonctionnement",
+        "de": "So funktioniert es",
+        "es": "Funcionamiento"
       },
-      "links": [
+      "description": {
+        "en": "Tick your metropolitan area, or let the integration offer the recycling centres nearest to your house, then save: they appear in the Discover tab. Hours come from the open data of the metropolitan areas: check with the operator before a long trip. No account, no key.",
+        "fr": "Cochez votre métropole, ou laissez l'intégration proposer les déchèteries les plus proches de votre maison, puis enregistrez : elles apparaissent dans l'onglet Découverte. Les horaires viennent de l'open data des métropoles : vérifiez auprès du gestionnaire avant un long trajet. Sans compte ni clé.",
+        "de": "Kreuze deine Metropole an oder lass die Integration die Wertstoffhöfe nahe deinem Haus anbieten, dann speichere: Die Höfe erscheinen im Tab „Entdecken“. Die Öffnungszeiten stammen aus den offenen Daten der Metropolen: prüfe sie vor einer langen Fahrt beim Betreiber. Ohne Konto, ohne Schlüssel.",
+        "es": "Marque su metrópoli, o deje que la integración proponga los puntos limpios más cercanos a su casa, y luego guarde: aparecen en la pestaña Descubrir. El horario procede de los datos abiertos de las metrópolis: compruébelo con el gestor antes de un trayecto largo. Sin cuenta ni clave."
+      }
+    },
+    {
+      "key": "areas",
+      "type": "multi_select",
+      "default": [],
+      "required": false,
+      "label": {
+        "en": "Metropolitan areas",
+        "fr": "Métropoles",
+        "de": "Metropolen",
+        "es": "Metrópolis"
+      },
+      "description": {
+        "en": "Every recycling centre with hours of the areas ticked is offered.",
+        "fr": "Toutes les déchèteries avec horaires des métropoles cochées sont proposées.",
+        "de": "Alle Wertstoffhöfe mit Öffnungszeiten der angekreuzten Metropolen werden angeboten.",
+        "es": "Se proponen todos los puntos limpios con horario de las metrópolis marcadas."
+      },
+      "options": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "value": "strasbourg",
+          "label": {
+            "en": "Strasbourg (Eurométropole)",
+            "fr": "Strasbourg (Eurométropole)",
+            "de": "Straßburg (Eurométropole)",
+            "es": "Estrasburgo (Eurométropole)"
+          }
+        },
+        {
+          "value": "toulouse",
+          "label": {
+            "en": "Toulouse Métropole (Decoset)",
+            "fr": "Toulouse Métropole (Decoset)",
+            "de": "Toulouse Métropole (Decoset)",
+            "es": "Toulouse Métropole (Decoset)"
+          }
+        },
+        {
+          "value": "bordeaux",
+          "label": {
+            "en": "Bordeaux Métropole",
+            "fr": "Bordeaux Métropole",
+            "de": "Bordeaux Métropole",
+            "es": "Burdeos (Bordeaux Métropole)"
+          }
+        },
+        {
+          "value": "tours",
+          "label": {
+            "en": "Tours Métropole Val de Loire",
+            "fr": "Tours Métropole Val de Loire",
+            "de": "Tours Métropole Val de Loire",
+            "es": "Tours Métropole Val de Loire"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
+      "key": "nearest_count",
       "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
+      "default": 3,
+      "min": 0,
+      "max": 10,
+      "required": false,
+      "label": {
+        "en": "Nearest recycling centres",
+        "fr": "Déchèteries les plus proches",
+        "de": "Nächste Wertstoffhöfe",
+        "es": "Puntos limpios más cercanos"
       },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
+      "description": {
+        "en": "Also offer this many sites nearest to the house (its location in Gladys), 0 to turn off.",
+        "fr": "Propose aussi ce nombre de déchèteries les plus proches de la maison (sa position dans Gladys), 0 pour désactiver.",
+        "de": "Biete zusätzlich so viele Wertstoffhöfe nahe dem Haus an (sein Standort in Gladys), 0 zum Abschalten.",
+        "es": "Proponer también este número de puntos limpios más cercanos a la casa (su ubicación en Gladys), 0 para desactivar."
+      }
     },
     {
-      "key": "longitude",
+      "key": "max_distance",
       "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
+      "default": 30,
+      "min": 1,
+      "max": 200,
+      "required": false,
+      "label": {
+        "en": "Maximum distance (km)",
+        "fr": "Distance maximale (km)",
+        "de": "Maximale Entfernung (km)",
+        "es": "Distancia máxima (km)"
       },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
+      "description": {
+        "en": "As the crow flies, from the house.",
+        "fr": "À vol d'oiseau, depuis la maison.",
+        "de": "Luftlinie, vom Haus aus.",
+        "es": "En línea recta, desde la casa."
+      }
     },
     {
-      "key": "unit",
+      "key": "closing_notice",
+      "type": "number",
+      "default": 30,
+      "min": 5,
+      "max": 180,
+      "required": false,
+      "label": {
+        "en": "Closing soon (minutes)",
+        "fr": "Fermeture prochaine (minutes)",
+        "de": "Bald geschlossen (Minuten)",
+        "es": "Cierre próximo (minutos)"
+      },
+      "description": {
+        "en": "Minutes before closing of the \"closes soon\" scene trigger.",
+        "fr": "Minutes avant la fermeture pour le déclencheur de scène « Ferme bientôt ».",
+        "de": "Minuten vor der Schließung für den Szenenauslöser „Schließt bald“.",
+        "es": "Minutos antes del cierre para el disparador de escena «Cierra pronto»."
+      }
+    },
+    {
+      "key": "language",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
-      "required": false,
-      "default": "celsius",
-      "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
-      ]
-    },
-    {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
-      "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+      "default": "fr",
+      "label": {
+        "en": "Language of names and messages",
+        "fr": "Langue des noms et des messages",
+        "de": "Sprache der Namen und Meldungen",
+        "es": "Idioma de los nombres y mensajes"
       },
-      "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "description": {
+        "en": "Feature names are fixed when a device is added.",
+        "fr": "Les noms des fonctionnalités sont figés à l'ajout d'un appareil.",
+        "de": "Die Namen der Funktionen werden beim Hinzufügen eines Geräts festgelegt.",
+        "es": "Los nombres de las funciones se fijan al añadir un dispositivo."
+      },
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
-    },
-    {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
+      "key": "status",
+      "label": {
+        "en": "Status",
+        "fr": "État",
+        "de": "Status",
+        "es": "Estado"
+      },
+      "description": {
+        "en": "Areas read, recycling centres offered, last read and errors.",
+        "fr": "Métropoles lues, déchèteries proposées, dernière lecture et erreurs.",
+        "de": "Gelesene Metropolen, angebotene Wertstoffhöfe, letzte Abfrage und Fehler.",
+        "es": "Metrópolis leídas, puntos limpios propuestos, última lectura y errores."
+      },
+      "timeout_seconds": 30,
+      "fields": []
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "opened",
+      "label": {
+        "en": "Recycling centre opens",
+        "fr": "Une déchèterie ouvre",
+        "de": "Ein Wertstoffhof öffnet",
+        "es": "Un punto limpio abre"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "A watched recycling centre opens, according to its published hours.",
+        "fr": "Une déchèterie suivie ouvre, d'après ses horaires publiés.",
+        "de": "Ein verfolgter Wertstoffhof öffnet, laut seinen veröffentlichten Zeiten.",
+        "es": "Un punto limpio seguido abre, según su horario publicado."
       },
       "fields": [
         {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
-        },
-        {
-          "key": "target",
+          "key": "site",
           "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
-          "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
-          ]
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Recycling centres",
+            "fr": "Déchèteries",
+            "de": "Wertstoffhöfe",
+            "es": "Puntos limpios"
+          },
+          "description": {
+            "en": "Empty: any watched recycling centre.",
+            "fr": "Vide : n'importe quelle déchèterie suivie.",
+            "de": "Leer: jeder verfolgte Wertstoffhof.",
+            "es": "Vacío: cualquier punto limpio seguido."
+          }
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "site_name",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
+          "label": {
+            "en": "Recycling centre",
+            "fr": "Déchèterie",
+            "de": "Wertstoffhof",
+            "es": "Punto limpio"
+          }
+        },
+        {
+          "key": "closes_at",
+          "type": "string",
+          "label": {
+            "en": "Closing time (HH:MM)",
+            "fr": "Heure de fermeture (HH:MM)",
+            "de": "Schließzeit (HH:MM)",
+            "es": "Hora de cierre (HH:MM)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "closing_soon",
+      "label": {
+        "en": "Recycling centre closes soon",
+        "fr": "Une déchèterie ferme bientôt",
+        "de": "Ein Wertstoffhof schließt bald",
+        "es": "Un punto limpio cierra pronto"
+      },
+      "description": {
+        "en": "A watched recycling centre closes within the minutes set in the configuration (30 by default).",
+        "fr": "Une déchèterie suivie ferme dans le nombre de minutes réglé dans la configuration (30 par défaut).",
+        "de": "Ein verfolgter Wertstoffhof schließt innerhalb der in der Konfiguration eingestellten Minuten (standardmäßig 30).",
+        "es": "Un punto limpio seguido cierra en los minutos ajustados en la configuración (30 por defecto)."
+      },
+      "fields": [
+        {
+          "key": "site",
+          "type": "multi_select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Recycling centres",
+            "fr": "Déchèteries",
+            "de": "Wertstoffhöfe",
+            "es": "Puntos limpios"
+          },
+          "description": {
+            "en": "Empty: any watched recycling centre.",
+            "fr": "Vide : n'importe quelle déchèterie suivie.",
+            "de": "Leer: jeder verfolgte Wertstoffhof.",
+            "es": "Vacío: cualquier punto limpio seguido."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "site_name",
+          "type": "string",
+          "label": {
+            "en": "Recycling centre",
+            "fr": "Déchèterie",
+            "de": "Wertstoffhof",
+            "es": "Punto limpio"
+          }
+        },
+        {
+          "key": "closes_at",
+          "type": "string",
+          "label": {
+            "en": "Closing time (HH:MM)",
+            "fr": "Heure de fermeture (HH:MM)",
+            "de": "Schließzeit (HH:MM)",
+            "es": "Hora de cierre (HH:MM)"
+          }
+        },
+        {
+          "key": "minutes_left",
+          "type": "number",
+          "label": {
+            "en": "Minutes before closing",
+            "fr": "Minutes avant la fermeture",
+            "de": "Minuten bis zur Schließung",
+            "es": "Minutos antes del cierre"
+          }
+        }
+      ]
+    },
+    {
+      "key": "closed",
+      "label": {
+        "en": "Recycling centre closes",
+        "fr": "Une déchèterie ferme",
+        "de": "Ein Wertstoffhof schließt",
+        "es": "Un punto limpio cierra"
+      },
+      "description": {
+        "en": "A watched recycling centre closes, according to its published hours.",
+        "fr": "Une déchèterie suivie ferme, d'après ses horaires publiés.",
+        "de": "Ein verfolgter Wertstoffhof schließt, laut seinen veröffentlichten Zeiten.",
+        "es": "Un punto limpio seguido cierra, según su horario publicado."
+      },
+      "fields": [
+        {
+          "key": "site",
+          "type": "multi_select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Recycling centres",
+            "fr": "Déchèteries",
+            "de": "Wertstoffhöfe",
+            "es": "Puntos limpios"
+          },
+          "description": {
+            "en": "Empty: any watched recycling centre.",
+            "fr": "Vide : n'importe quelle déchèterie suivie.",
+            "de": "Leer: jeder verfolgte Wertstoffhof.",
+            "es": "Vacío: cualquier punto limpio seguido."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "site_name",
+          "type": "string",
+          "label": {
+            "en": "Recycling centre",
+            "fr": "Déchèterie",
+            "de": "Wertstoffhof",
+            "es": "Punto limpio"
+          }
+        },
+        {
+          "key": "next_opening",
+          "type": "string",
+          "label": {
+            "en": "Next opening",
+            "fr": "Prochaine ouverture",
+            "de": "Nächste Öffnung",
+            "es": "Próxima apertura"
+          }
         }
       ]
     }
   ],
   "scene_actions": [
     {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
+      "key": "is_open",
+      "label": {
+        "en": "Is the recycling centre open?",
+        "fr": "La déchèterie est-elle ouverte ?",
+        "de": "Ist der Wertstoffhof geöffnet?",
+        "es": "¿Está abierto el punto limpio?"
+      },
       "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
+        "en": "Your watched recycling centres in a sentence ready to send: open until when, or when they open next.",
+        "fr": "Vos déchèteries suivies en une phrase prête à envoyer : ouverte jusqu'à quelle heure, ou prochaine ouverture.",
+        "de": "Deine verfolgten Wertstoffhöfe in einem Satz zum Verschicken: geöffnet bis wann oder nächste Öffnung.",
+        "es": "Sus puntos limpios seguidos en una frase lista para enviar: abierto hasta cuándo, o próxima apertura."
       },
       "timeout_seconds": 15,
       "fields": [
         {
-          "key": "device",
-          "type": "select",
+          "key": "sites",
+          "type": "multi_select",
           "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
+          "required": false,
+          "label": {
+            "en": "Recycling centres",
+            "fr": "Déchèteries",
+            "de": "Wertstoffhöfe",
+            "es": "Puntos limpios"
+          },
+          "description": {
+            "en": "Empty: every watched recycling centre.",
+            "fr": "Vide : toutes les déchèteries suivies.",
+            "de": "Leer: alle verfolgten Wertstoffhöfe.",
+            "es": "Vacío: todos los puntos limpios seguidos."
+          }
         }
       ],
       "outputs": [
         {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "key": "sentence",
+          "type": "string",
+          "label": {
+            "en": "Sentence",
+            "fr": "Phrase",
+            "de": "Satz",
+            "es": "Frase"
+          }
+        },
+        {
+          "key": "open_count",
+          "type": "number",
+          "label": {
+            "en": "Recycling centres open now",
+            "fr": "Déchèteries ouvertes maintenant",
+            "de": "Jetzt geöffnete Wertstoffhöfe",
+            "es": "Puntos limpios abiertos ahora"
+          }
+        },
+        {
+          "key": "sites_count",
+          "type": "number",
+          "label": {
+            "en": "Recycling centres checked",
+            "fr": "Déchèteries consultées",
+            "de": "Abgefragte Wertstoffhöfe",
+            "es": "Puntos limpios consultados"
+          }
         }
       ]
     }
   ],
   "widgets": [
     {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
+      "key": "sites",
+      "label": {
+        "en": "Recycling centres",
+        "fr": "Déchèteries",
+        "de": "Wertstoffhöfe",
+        "es": "Puntos limpios"
       },
-      "icon": "activity",
-      "action_timeout_seconds": 15
+      "description": {
+        "en": "Your watched recycling centres: open or closed, until when, next opening.",
+        "fr": "Vos déchèteries suivies : ouvertes ou fermées, jusqu'à quelle heure, réouverture.",
+        "de": "Deine verfolgten Wertstoffhöfe: geöffnet oder geschlossen, bis wann, nächste Öffnung.",
+        "es": "Sus puntos limpios seguidos: abiertos o cerrados, hasta cuándo, reapertura."
+      },
+      "icon": "trash-2",
+      "settings": [
+        {
+          "key": "sites",
+          "type": "multi_select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Recycling centres shown",
+            "fr": "Déchèteries affichées",
+            "de": "Angezeigte Wertstoffhöfe",
+            "es": "Puntos limpios mostrados"
+          },
+          "description": {
+            "en": "Empty: every watched recycling centre (10 at most).",
+            "fr": "Vide : toutes les déchèteries suivies (10 au plus).",
+            "de": "Leer: alle verfolgten Wertstoffhöfe (höchstens 10).",
+            "es": "Vacío: todos los puntos limpios seguidos (10 como máximo)."
+          }
+        },
+        {
+          "key": "show_hours",
+          "type": "boolean",
+          "default": true,
+          "required": false,
+          "label": {
+            "en": "Show the times",
+            "fr": "Afficher les heures",
+            "de": "Uhrzeiten anzeigen",
+            "es": "Mostrar las horas"
+          }
+        }
+      ]
     }
   ]
 }

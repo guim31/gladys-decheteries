@@ -1,67 +1,157 @@
-# Template de démonstration
+# Déchèteries
 
-Ceci est la documentation utilisateur de l'intégration. Gladys ré-héberge ce
-fichier et affiche un lien **Documentation** permanent vers lui dans l'écran
-de configuration (dans la langue de l'utilisateur, avec l'anglais en repli) —
-c'est au moment de configurer que l'utilisateur en a le plus besoin. Gardez
-les courtes indications d'accueil dans les blocs `section` du `config_schema`
-du manifest ; mettez ici le pas-à-pas détaillé (captures d'écran, dépannage…).
+Les **déchèteries des métropoles françaises** dans Gladys : ouverte ou non, heure de fermeture,
+prochaine ouverture, horaires du jour, et les déchets acceptés quand la métropole les publie. Les
+horaires viennent de l'**open data** des métropoles. **Sans compte ni clé.**
+
+> Les horaires sont ceux que publient les métropoles : vérifiez auprès du gestionnaire avant un long
+> trajet, surtout un jour férié ou après un changement de saison.
+
+Intégration non officielle, sans lien avec les métropoles ni avec les gestionnaires. Testée sur les
+vraies réponses des quatre sources (30/10/2026), pas encore sur une vraie instance Gladys : vos
+retours sont les bienvenus.
 
 ## Ce que vous obtenez
 
-Six appareils de démonstration apparaissent après l'installation : une
-station météo (vraies données Open-Meteo), un interrupteur, une lampe
-variable, une prise connectée avec mesure de puissance, un détecteur de
-mouvement et une caméra.
+- Un **appareil par déchèterie** ajoutée : ouverte maintenant, horaires du jour, heure de fermeture,
+  prochaine ouverture.
+- À Bordeaux, les **déchets acceptés** en texte, et cinq fonctionnalités oui/non : déchets verts,
+  gravats, bois, appareils électriques, encombrants.
+- Un **widget** « Déchèteries » : vos déchèteries sur une ligne chacune, en vert quand c'est ouvert,
+  en orange la dernière demi-heure, en rouge quand c'est fermé.
+- Trois **déclencheurs de scène** : une déchèterie ouvre, ferme bientôt (30 minutes par défaut),
+  ferme.
+- Une **action de scène** « La déchèterie est-elle ouverte ? » : vos déchèteries en une phrase, avec
+  l'heure de fermeture ou la prochaine ouverture.
+
+## Prérequis
+
+- Gladys Assistant **5.3.0** ou plus récent.
+- Un accès à Internet depuis Gladys : les sources sont des portails open data publics.
+- Pour les déchèteries les plus proches : la position de la maison réglée dans Gladys
+  (**Paramètres → Maisons**).
+
+## Installation
+
+1. Dans Gladys, ouvrez **Intégrations → Installer depuis GitHub**.
+2. Collez `https://github.com/guim31/gladys-decheteries` et validez.
+3. Gladys demande de partager la position de la maison : elle sert seulement à trouver les
+   déchèteries les plus proches et ne quitte jamais votre Gladys.
 
 ## Configuration
 
-1. Ouvrez l'onglet **Configuration** de l'intégration.
-2. Renseignez la **latitude** et la **longitude** que la station météo de
-   démonstration doit observer (Paris par défaut), et choisissez votre unité
-   de température. L'**intervalle de rafraîchissement** règle la fréquence
-   de lecture de la station météo et de la puissance de la prise : toutes
-   les 5 minutes par défaut, toutes les minutes au plus.
-3. Enregistrez : les appareils apparaissent dans l'onglet **Découverte**,
-   prêts à être ajoutés.
+### Réglages
 
-Le réglage **Préférer la connexion locale** pilote la prise de
-démonstration : elle affiche en badge le canal réellement utilisé (local ou
-cloud), avec un point orange quand elle fonctionne en mode dégradé (local
-refusé, bascule cloud).
+- **Métropoles** : toutes les déchèteries avec horaires des métropoles cochées sont proposées.
+  Disponibles aujourd'hui : Strasbourg (Eurométropole), Toulouse Métropole (Decoset), Bordeaux
+  Métropole, Tours Métropole Val de Loire.
+- **Déchèteries les plus proches** : propose aussi ce nombre de déchèteries les plus proches de la
+  maison (3 par défaut, 0 pour désactiver), dans la **distance maximale** (30 km à vol d'oiseau par
+  défaut). Rien à cocher si vous habitez l'une des quatre métropoles.
+- **Fermeture prochaine (minutes)** : quand se déclenche « Une déchèterie ferme bientôt » (30 par
+  défaut).
+- **Langue des noms et des messages** : français par défaut. Les noms des fonctionnalités sont figés
+  à l'ajout d'un appareil ; les textes suivent la langue tout de suite.
 
-## Actions
+### Ajouter des déchèteries
 
-- **Tester le fournisseur météo** — effectue une requête en direct vers
-  Open-Meteo et affiche la température et l'humidité actuelles sous le
-  bouton.
-- **Identifier un appareil** — choisissez un de vos appareils dans la liste
-  et il se signale (la lampe de démonstration « clignote » dans les logs).
+Enregistrez la configuration : les déchèteries apparaissent dans l'onglet **Découverte** de
+l'intégration. Ajoutez celles où vous allez. Une déchèterie ajoutée reste suivie même si vous
+décochez sa métropole.
 
-## Scènes
+### Vérifier
 
-L'intégration ajoute ses propres cartes à l'éditeur de scènes (Gladys 5.1
-ou plus récent), dans la catégorie **Intégrations** :
+Le bouton **État** liste les métropoles lues, le nombre de déchèteries avec horaires, les
+déchèteries proposées, la dernière lecture et les erreurs.
 
-- **Mouvement détecté** (déclencheur) — lance la scène quand un détecteur
-  de démonstration voit bouger quelque chose. Choisissez éventuellement le
-  détecteur et ce qui a bougé (personne, animal) ; laissés vides, toute
-  détection correspond. Les actions suivantes peuvent lire ce qui a bougé
-  avec `{{triggerEvent.data.target}}`.
-- **Identifier un appareil** (action) — fait se signaler l'appareil choisi.
-  Elle indique si l'appareil a pu se signaler, pour que les actions
-  suivantes puissent en dépendre.
+## Appareils
 
-## Tableau de bord
+| Fonctionnalité            | Type         | Valeur                                                                     |
+| ------------------------- | ------------ | -------------------------------------------------------------------------- |
+| Ouvert maintenant         | binaire      | 1 ouvert, 0 fermé ; pas de valeur si les horaires sont illisibles          |
+| Horaires du jour          | texte        | « 09:00–12:00, 14:00–18:00 », « Fermé aujourd'hui », « Jour férié… »       |
+| Heure de fermeture        | texte        | « 18:00 » quand c'est ouvert, « Fermé » sinon                              |
+| Prochaine ouverture       | texte        | « demain à 09:00 », « dimanche à 10:00 »                                   |
+| Déchets acceptés          | texte        | Bordeaux seulement : « déchets verts, gravats, bois… »                     |
+| Accepte les déchets verts | binaire (×5) | Bordeaux seulement : déchets verts, gravats, bois, électrique, encombrants |
 
-Ajoutez le widget **État de la démo** à un tableau de bord : il affiche en
-direct la température de la station météo et la puissance de la prise du
-bureau, la connexion utilisée par la prise (en orange si dégradée) et la
-position observée. Son bouton **Identifier la lampe** fait se signaler la
-lampe de démonstration.
+Les valeurs sont calculées chaque minute par l'intégration, sans aucune requête.
+
+## Widget du tableau de bord
+
+Ajoutez le widget **Déchèteries** à un tableau de bord : une ligne par déchèterie (10 au plus), avec
+son nom dans Gladys et « ouvert jusqu'à 18:00 », « ferme dans 15 min » ou « fermé · ouvre dim.
+10:00 ». Réglages : les déchèteries affichées (vide : toutes), et **Afficher les heures** pour ne
+garder que « ouvert » ou « fermé ».
+
+## Déclencheurs de scène
+
+- **Une déchèterie ouvre** : variables `site_name`, `closes_at`.
+- **Une déchèterie ferme bientôt** : autant de minutes avant la fermeture que réglé dans la
+  configuration ; variables `site_name`, `closes_at`, `minutes_left`.
+- **Une déchèterie ferme** : variables `site_name`, `next_opening`.
+
+Chaque déclencheur peut se limiter à certaines déchèteries ; vide, n'importe quelle déchèterie suivie
+le déclenche. Après une longue pause (ordinateur en veille, Gladys arrêté), aucun déclencheur n'est
+envoyé en retard.
+
+## Action de scène
+
+**La déchèterie est-elle ouverte ?** renvoie `sentence` (« Déchèterie de Blagnac : ouvert jusqu'à
+12:00. »), `open_count` et `sites_count`, pour les déchèteries choisies ou toutes. Envoyez la phrase
+par message ou sur une enceinte, ou continuez seulement si `open_count` vaut 1.
+
+## Exemples de scènes
+
+- Le samedi à 9 h, envoyer « La déchèterie est-elle ouverte ? » sur votre téléphone avant de charger
+  la voiture.
+- Quand « Une déchèterie ferme bientôt » se déclenche et que vous n'êtes pas à la maison, un rappel :
+  « ferme à 18:00 ».
+
+## Données et rafraîchissement
+
+| Métropole  | Source                                           | Avec horaires | Jours fériés   |
+| ---------- | ------------------------------------------------ | ------------- | -------------- |
+| Strasbourg | data.strasbourg.eu, `lieux_decheteries`          | 6             | non précisé    |
+| Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm`    | 20            | non précisé    |
+| Bordeaux   | datahub.bordeaux-metropole.fr, temps réel        | 18            | fermé (PH off) |
+| Tours      | data.tours-metropole.fr, équipements déchèteries | 7             | fermé (PH off) |
+
+- Chaque métropole, c'est une requête **une fois par jour** (une heure plus tard après un échec),
+  seulement pour les métropoles utiles. Ouvert ou fermé se calcule chaque minute d'après les
+  horaires gardés, à l'heure de Paris.
+- Les jours fériés sont calculés hors ligne (Alsace-Moselle comprise). Quand la source ne dit pas ce
+  que fait une déchèterie un jour férié, elle est **supposée fermée** le 1er janvier, le 1er mai et le
+  25 décembre, et les autres jours fériés fermée sauf si elle ouvre le dimanche : les textes disent
+  « a priori ».
+- Les exceptions datées publiées par Tours (horaires d'été, travaux, veille de Noël) sont
+  appliquées.
+- Licences : Licence Ouverte / Etalab 2.0 pour les quatre sources.
 
 ## Dépannage
 
-L'intégration journalise tout ce qu'elle fait : consultez les logs de
-l'intégration depuis l'interface Gladys (ou `docker logs` sur l'hôte) avec
-`LOG_LEVEL=debug` pour le détail complet.
+- **Rien dans l'onglet Découverte** : cochez une métropole, ou réglez la position de la maison et
+  gardez « Déchèteries les plus proches » au-dessus de 0. Le bouton **État** dit lequel.
+- **« Horaires illisibles »** : la source a publié des horaires que l'intégration ne sait pas lire
+  (elle ne devine jamais) : dites-le sur le forum.
+- **Une métropole est indisponible** : les derniers horaires lus sont gardés ; nouvel essai une heure
+  plus tard.
+- Journaux : dans l'écran de l'intégration, ou `LOG_LEVEL=debug` pour chaque lecture.
+
+## Limites
+
+- Quatre métropoles seulement : les autres ne publient pas d'horaires en open data (Rennes donne les
+  horaires d'une déchèterie sur 24, Nantes seulement les déchets, Angers un calendrier plus tenu à
+  jour). Signalez-nous une autre source.
+- Les données de Toulouse (Decoset) datent de 2022.
+- Les centres de recyclage mobiles de Bordeaux ne publient pas d'horaires : ils ne sont pas proposés.
+- Les déchets acceptés ne sont connus qu'à Bordeaux.
+- Les conditions d'accès (badge, habitants seulement, gabarit du véhicule) ne sont pas affichées :
+  voyez le gestionnaire.
+- Développée sans visiter les sites : vos retours sont les bienvenus.
+
+## Crédits
+
+Données : Eurométropole de Strasbourg, Toulouse Métropole et Decoset, Bordeaux Métropole, Tours
+Métropole Val de Loire (Licence Ouverte). Règles des jours fériés comme date-holidays. Construite avec
+le [SDK d'intégration de Gladys](https://github.com/GladysAssistant/integration-sdk-js).

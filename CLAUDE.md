@@ -32,15 +32,22 @@ pushing.
 
 ```
 index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+src/app.js                        registers every SDK handler, shared by index.js and the tests
+src/service.js                    runtime: daily reads, house location, minute clock, states, triggers, texts
+src/sources.js                    the four open data sources, records turned into sites, distances
+src/hours.js                      OpenStreetMap subset and Strasbourg periods, open/closed/next at an instant
+src/holidays.js                   French public holidays, offline (Alsace-Moselle, overseas)
+src/clock.js                      dates and local time
+src/devices.js                    device of a site and its states
+src/messages.js                   every text sent by the container, in en/fr/de/es
+src/http.js                       fetch with timeout, size cap, Retry-After
+src/scenes.js                     scene action is_open
+src/widgets.js                    dashboard widget sites
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
 gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (mandatory)
 test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+test/fixtures/api                 real answers of the four sources (2026-10-30)
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,8 +77,8 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** is in English, French, German and Spanish: action
+  messages, manifest texts, and `docs/*.md`, kept in sync.
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
 
@@ -251,3 +258,39 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 - Docs `en`, `fr`, `de`, `es` avec les mêmes sections.
 - Chauffe, ouverture, sécurité : ne rien rendre pilotable « comme un thermostat » ou par un assistant
   vocal quand une erreur serait dangereuse (leçon d'OctoPrint).
+
+## Déchèteries (cette intégration)
+
+- **Sources retenues le 30/10/2026** (Opendatasoft v2.1, sans clé, une requête chacune, `select` limité) :
+  Strasbourg (`lieux_decheteries`, 6 sites, `periods` JSON, `dayOfWeek` **0 = lundi**, vérifié par La
+  Wantzenau lun./mer./sam. et le dimanche matin des grandes déchèteries ; identifiant = le numéro de
+  `friendlyurl`), Toulouse Métropole (`dechetteries_tm`, données Decoset **de 2022**, `equip_uid`,
+  `adr_numero` 99999 = sans numéro), Bordeaux Métropole (`dechetteries-en-temps-reel` sur
+  `datahub.bordeaux-metropole.fr`, `gid`, horaires OSM, `acceptes` en codes, sauf Floirac qui y met une
+  phrase ; les 20 centres mobiles n'ont que `PH off` : non proposés), Tours Métropole (`publidata_uuid`,
+  horaires OSM avec exceptions datées).
+- **Écartées** : Rennes (`horaires` rempli pour 1 site sur 24), Nantes (filières seules), Angers
+  (calendrier jour par jour non tenu : la plupart des sites s'arrêtent en septembre 2026, et « Toussaint N »
+  côtoie « Sauf été O » le même jour), Aix-Marseille (texte libre), Seine Ouest (2 sites). Bordeaux publie
+  aussi un `statut` OUVERT/FERME en temps réel, inutilisé (lecture quotidienne demandée) : piste pour plus
+  tard.
+- **Format OSM** : sous-ensemble lu (jours, `PH`, mois, jours d'un mois avec année facultative, plages
+  entre deux dates, horaires, `off`) ; règles appliquées dans l'ordre, la dernière qui couvre un jour le
+  remplace en entier. Toute règle hors de ce sous-ensemble rend **tout** l'horaire illisible (`null`) :
+  jamais deviné.
+- **Jours fériés** : `PH` de la source quand il existe (Bordeaux, Tours) ; sinon fermé le 1er janvier, le
+  1er mai et le 25 décembre, et les autres fériés fermé sauf si le site ouvre le dimanche **de la même
+  semaine** (saison de Blagnac comprise), avec « a priori » dans les textes.
+- **Appareils** : identifiant `site:<source>-<id>` ; les fonctionnalités dépendent de la source seulement
+  (déchets pour Bordeaux), jamais des données du jour. Un site ajouté reste lu même si sa métropole est
+  décochée ; s'il perd ses horaires, plus d'état « ouvert ».
+- **Maison** : `location: true`, `getHouses()` à chaque lecture ; sans maison localisée, seules les
+  métropoles cochées sont proposées. Les coordonnées restent dans le conteneur.
+- **Déclencheurs** : `closing_soon` au seuil de la config (`closing_notice`, les filtres de scène ne
+  comparent pas), aussi à l'ouverture d'un créneau plus court que le seuil ; rien après un écart de plus de
+  5 min ni après un changement des horaires publiés (`signature`).
+- **Réponses vides** : une réponse sans `results`, vide ou tronquée (`total_count` > 100, une seule page lue)
+  est un échec : on garde la dernière bonne lecture et on réessaie une heure plus tard.
+- **Strasbourg** : `exceptionalschedule` est du HTML libre (vu sur les piscines), jamais lu ; une période
+  datée sans créneau vaut fermeture. Un créneau finissant à 24:00 n'est pas relié au lendemain (aucune
+  source n'en publie).
