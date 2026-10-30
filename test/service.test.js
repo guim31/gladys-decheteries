@@ -269,3 +269,21 @@ test('the language of the configuration changes the texts, not the frozen names'
     'Jetzt geöffnet',
   );
 });
+
+test('an empty or truncated answer is a failure: the sites of the last read are kept', async (t) => {
+  const world = await createWorld();
+  t.after(() => world.app.stop());
+  const blagnac = await create(world, 'Blagnac');
+  const url = urlOf('toulouse');
+  for (const answer of [
+    { total_count: 0, results: [] },
+    { error: 'x' },
+    { total_count: 150, results: world.network.routes[url].results },
+  ]) {
+    world.network.routes[url] = answer;
+    await world.service.refresh();
+    assert.equal(world.service.failing, true);
+    assert.equal(world.service.sites.size, 20);
+    assert.equal(lastState(world, blagnac, 'open'), 1);
+  }
+});

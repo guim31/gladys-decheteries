@@ -158,3 +158,21 @@ test('weekday ranges wrap around the week, spaces around commas are tolerated', 
   assert.equal(hours(schedule, '2026-11-03', '31'), ''); // Tuesday
   assert.equal(hours(schedule, '2026-11-07', '31'), '9-12,14-17'); // Saturday
 });
+
+test('dated ranges across a year, and dates that cannot be meant, are rejected or read right', () => {
+  const winter = parseOpeningHours('Mo-Fr 09:00-17:00; 2026 Dec 20-Jan 05 off');
+  assert.equal(hours(winter, '2026-12-22', '31'), '');
+  assert.equal(hours(winter, '2027-01-04', '31'), '');
+  assert.equal(hours(winter, '2027-01-06', '31'), '9-17');
+  for (const text of ['Jun 28-16 off', 'Feb 0 off', 'Dec 32 off', '2026 Oct-Mar Mo 09:00-12:00']) {
+    assert.equal(parseOpeningHours(`Mo-Fr 09:00-12:00; ${text}`), null, text);
+  }
+});
+
+test('a dated period of Strasbourg without hours is a closure', () => {
+  const periods = JSON.parse(record('strasbourg', (r) => r.name.includes('Wacken')).periods);
+  periods.push({ alwaysOpen: 0, schedules: [], startDate: '2026-12-01', endDate: '2026-12-31' });
+  const closed = parsePeriods(JSON.stringify(periods));
+  assert.equal(hours(closed, '2026-12-08', '67'), '');
+  assert.equal(hours(closed, '2027-01-04', '67'), '8-18.75');
+});

@@ -597,7 +597,8 @@ export class RecyclingCentres {
     if (this.config.areas.length === 0 && !(nearest && this.house)) {
       blocks.push(render(REPORTS, 'noArea'));
     }
-    for (const [id, area] of this.areas) {
+    const needed = new Set(this.neededSources().map((source) => source.id));
+    for (const [id, area] of [...this.areas].filter(([key]) => needed.has(key))) {
       const name = sourceOf(id).name;
       if (area.error) {
         blocks.push(render(REPORTS, 'areaError', { name, error: area.error }));

@@ -110,6 +110,10 @@ export function parseDateSelector(text) {
     const [, year, first, last] = match;
     const from = month(first);
     const to = month(last);
+    // "2026 Oct-Mar" is ambiguous (which March?): rejected.
+    if (year && from > to) {
+      return null;
+    }
     return (date) => {
       const current = Number(date.slice(5, 7));
       const inside =
@@ -127,6 +131,10 @@ export function parseDateSelector(text) {
       const [first, last] = range.split('-').map(Number);
       return [first, last ?? first];
     });
+    // "Jun 28-16", "Feb 0", "Dec 32": never a day, so a misreading.
+    if (ranges.some(([first, last]) => first < 1 || last > 31 || first > last)) {
+      return null;
+    }
     return (date) =>
       (!year || date.startsWith(year)) &&
       date.slice(4, 8) === prefix &&
@@ -142,9 +150,13 @@ export function parseDateSelector(text) {
     const from = `${pad(month(fromMonth))}-${pad(fromDay)}`;
     const to = `${pad(month(toMonth))}-${pad(toDay)}`;
     if (fromYear || toYear) {
-      const start = `${fromYear ?? toYear}-${from}`;
-      const end = `${toYear ?? fromYear}-${to}`;
-      return (date) => date >= start && date <= end;
+      // One year given: the range may run into the next one ("2026 Dec 20-Jan 05").
+      const wraps = from > to;
+      const startYear = fromYear ?? String(Number(toYear) - (wraps ? 1 : 0));
+      const endYear = toYear ?? String(Number(fromYear) + (wraps ? 1 : 0));
+      const start = `${startYear}-${from}`;
+      const end = `${endYear}-${to}`;
+      return end >= start ? (date) => date >= start && date <= end : null;
     }
     return (date) => {
       const day = date.slice(5);
@@ -255,7 +267,8 @@ export function parsePeriods(periods) {
       }
     }
     const always = Number(period?.alwaysOpen) === 1;
-    if (!always && week.every((slots) => slots.length === 0)) {
+    // An undated period without hours says nothing; a dated one is a closure.
+    if (!always && !date && week.every((slots) => slots.length === 0)) {
       continue;
     }
     week.forEach((slots, weekday) => {

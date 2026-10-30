@@ -289,3 +289,8 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 - **Déclencheurs** : `closing_soon` au seuil de la config (`closing_notice`, les filtres de scène ne
   comparent pas), aussi à l'ouverture d'un créneau plus court que le seuil ; rien après un écart de plus de
   5 min ni après un changement des horaires publiés (`signature`).
+- **Réponses vides** : une réponse sans `results`, vide ou tronquée (`total_count` > 100, une seule page lue)
+  est un échec : on garde la dernière bonne lecture et on réessaie une heure plus tard.
+- **Strasbourg** : `exceptionalschedule` est du HTML libre (vu sur les piscines), jamais lu ; une période
+  datée sans créneau vaut fermeture. Un créneau finissant à 24:00 n'est pas relié au lendemain (aucune
+  source n'en publie).

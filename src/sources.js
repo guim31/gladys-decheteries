@@ -16,7 +16,7 @@
 
 import { PARIS } from './clock.js';
 import { parseOpeningHours, parsePeriods } from './hours.js';
-import { getJson } from './http.js';
+import { HttpError, getJson, hostOf } from './http.js';
 
 const records = (base, fields) =>
   `${base}/records?select=${encodeURIComponent(fields.join(','))}&limit=100`;
@@ -128,7 +128,6 @@ export const SOURCES = [
       'friendlyurl',
       'address',
       'periods',
-      'exceptionalschedule',
       'point_geo',
     ]),
     // The id of the place in the city's directory, in its page address.
@@ -250,8 +249,15 @@ export const sourceOf = (id) => SOURCES.find((source) => source.id === id) ?? nu
 /** The sites of a source: one request. */
 export async function readSource(fetchImpl, source) {
   const body = await getJson(fetchImpl, source.url, { maxBytes: 2e6 });
-  const list = Array.isArray(body?.results) ? body.results : [];
-  return list.map((record) => source.toSite(source, record ?? {})).filter(Boolean);
+  // An empty or unexpected answer is a failure: the last good read is kept.
+  if (!Array.isArray(body?.results) || body.results.length === 0) {
+    throw new HttpError(`${hostOf(source.url)}: no record`);
+  }
+  // One page of 100: the sources hold a few dozen sites. More would be cut.
+  if (Number(body.total_count) > body.results.length) {
+    throw new HttpError(`${hostOf(source.url)}: more than ${body.results.length} records`);
+  }
+  return body.results.map((record) => source.toSite(source, record ?? {})).filter(Boolean);
 }
 
 /** Distance in km between two points (haversine). */
