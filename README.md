@@ -38,12 +38,13 @@ Discover tab.
 
 ## How it works
 
-| Area       | Source (Opendatasoft v2.1, no key)                                   | Hours format             |
+| Area       | Source (Opendatasoft v2.1 or WFS, no key)                            | Hours format             |
 | ---------- | -------------------------------------------------------------------- | ------------------------ |
 | Strasbourg | data.strasbourg.eu, `lieux_decheteries`                              | weekly periods (JSON)    |
 | Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm` (Decoset)              | OpenStreetMap            |
 | Bordeaux   | datahub.bordeaux-metropole.fr, `dechetteries-en-temps-reel`          | OpenStreetMap, waste     |
 | Tours      | data.tours-metropole.fr, `equipements-decheteries-tours-metropole-…` | OpenStreetMap with dates |
+| Lyon       | data.grandlyon.com, WFS `gip_proprete.gipdecheterie_3_0_0` (public)  | OpenStreetMap, waste     |
 
 Each area needed is read once a day (one request). Open or closed is then
 computed every minute from the hours kept, in the time zone of Paris, without
@@ -53,7 +54,11 @@ makes a site's hours "unreadable", never guessed.
 
 ## Limitations
 
-- Four areas only: Rennes (hours for 1 site in 24), Nantes (waste only) and
+- Lyon writes "2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa …": the date is read as
+  shared by every comma part of the rule, as the publisher means it (strict
+  OpenStreetMap would not). Its mobile centres publish a few dates a month or
+  two ahead.
+- Five areas only: Rennes (hours for 1 site in 24), Nantes (waste only) and
   Angers (calendar no longer kept up) were left aside on 2026-10-30.
 - The Toulouse data (Decoset) was last updated in 2022.
 - Strasbourg and Toulouse say nothing about public holidays: closed on 1 Jan,
@@ -73,13 +78,14 @@ npx github:GladysAssistant/integration-store .   # store admission checks
 ```
 
 See [CLAUDE.md](CLAUDE.md) for the architecture and the conventions. The test
-fixtures (`test/fixtures/api`) are the real answers of the four sources,
-captured on 2026-10-30.
+fixtures (`test/fixtures/api`) are the real answers of the five sources,
+captured on 2026-10-30 (Lyon on 2026-10-31).
 
 ## Credits
 
 - Data: Eurométropole de Strasbourg, Toulouse Métropole and the Decoset
-  syndicate, Bordeaux Métropole, Tours Métropole Val de Loire, under the
+  syndicate, Bordeaux Métropole, Tours Métropole Val de Loire, Métropole de
+  Lyon, under the
   Licence Ouverte 2.0 (Etalab).
 - Public holidays: same rules as
   [gladys-holidays](https://github.com/guim31/gladys-holidays) (date-holidays).

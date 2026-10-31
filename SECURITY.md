@@ -33,10 +33,10 @@ In scope: the code of this repository and the Docker image it publishes.
 The integration stores nothing in `/data` and holds no secret: no account, no
 API key. It reads the location of the Gladys house (`location: true`) only to
 compute distances inside the container; the coordinates are never sent
-anywhere. Its only network traffic is a daily HTTPS GET to four public open
+anywhere. Its only network traffic is a daily HTTPS GET to five public open
 data portals (data.strasbourg.eu, data.toulouse-metropole.fr,
-datahub.bordeaux-metropole.fr, data.tours-metropole.fr) and the WebSocket to
-Gladys.
+datahub.bordeaux-metropole.fr, data.tours-metropole.fr, data.grandlyon.com,
+without credentials) and the WebSocket to Gladys.
 
 Out of scope: Gladys Assistant itself (see its
 [security policy](https://github.com/GladysAssistant/Gladys/security/policy)),

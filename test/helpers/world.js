@@ -1,6 +1,7 @@
 // -----------------------------------------------------------------------------
 // A complete test world: the SDK's fake Gladys, a fake `fetch` serving the
-// real answers of the four sources (captured on 2026-10-30, test/fixtures/api),
+// real answers of the five sources (captured on 2026-10-30, Lyon on 2026-10-31,
+// test/fixtures/api),
 // a manual clock, and the integration wired on top through registerHandlers.
 // Nothing touches the network.
 // -----------------------------------------------------------------------------

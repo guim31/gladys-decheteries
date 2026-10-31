@@ -6,7 +6,7 @@
 //   closes    text/text      closing time of the current opening, "Closed"
 //   next      text/text      next opening ("tomorrow at 08:30")
 //
-// and, for the sources that list the accepted waste (Bordeaux):
+// and, for the sources that list the accepted waste (Bordeaux, Lyon):
 //
 //   waste       text/text     accepted waste, in the configured language
 //   green_waste, rubble, wood, electrical, bulky   input/binary, 1 = accepted

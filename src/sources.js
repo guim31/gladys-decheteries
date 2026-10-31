@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 // The open data sources: the metropolitan areas that publish the opening hours
-// of their recycling centres (Opendatasoft v2.1, no key). Each one is a single
-// request: the datasets hold a few dozen records.
+// of their recycling centres (Opendatasoft v2.1, and the WFS of Grand Lyon, no
+// key). Each one is a single request: the datasets hold a few dozen records.
 //
 // Only sources with real hours are here. Left aside on 30/10/2026: Rennes
 // (hours for 1 site in 24), Nantes (waste streams only), Angers (a day by day
@@ -15,7 +15,7 @@
 // -----------------------------------------------------------------------------
 
 import { PARIS } from './clock.js';
-import { parseOpeningHours, parsePeriods } from './hours.js';
+import { jsonList, parseOpeningHours, parsePeriods } from './hours.js';
 import { HttpError, getJson, hostOf } from './http.js';
 
 const records = (base, fields) =>
@@ -102,6 +102,13 @@ export const WASTE_CODES = [
   'AMIANTE',
   'LIVRES',
   'MEDICAMENTS',
+  // Lyon only.
+  'ENCOMBRANTS',
+  'PLATRE',
+  'LAMPES',
+  'TEXTILES',
+  'PAPIER',
+  'FENETRES',
 ];
 
 /** The common streams shown as binary features: code lists by feature key. */
@@ -111,11 +118,84 @@ export const WASTE_FEATURES = {
   wood: ['BOIS'],
   electrical: ['DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES', 'ECRANS_TELEVISEURS'],
   bulky: [
+    'ENCOMBRANTS',
     'TOUT_VENANT_INCINERABLE',
     'TOUT_VENANT_NON_INCINERABLE',
     'DECHETS_DELEMENTS_DAMEUBLEMENT',
   ],
 };
+
+// Waste categories of Grand Lyon (`allowed_waste`), by the start of their
+// label without accents or case: "DEEE (Télévisions, écrans…)" → "deee".
+const LYON_WASTE = [
+  ['vegetaux', 'DECHETS_VERTS'],
+  ['gravats', 'GRAVATS'],
+  ['bois', 'BOIS'],
+  ['metaux', 'METAUX'],
+  ['cartons', 'CARTON'],
+  ['deee', 'DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES'],
+  ['petits appareils electriques', 'DECHETS_DEQUIPEMENTS_ELECTRIQUES_ET_ELECTRONIQUES'],
+  ['meubles', 'DECHETS_DELEMENTS_DAMEUBLEMENT'],
+  ['encombrants', 'ENCOMBRANTS'],
+  ['ddn', 'DECHETS_DIFFUS_SPECIFIQUES'],
+  ['huiles vidange', 'HUILES_DE_VIDANGE'],
+  ['huiles friture', 'HUILES_ALIMENTAIRES'],
+  ['batteries', 'BATTERIES'],
+  ['piles', 'PILES'],
+  ['pneus', 'PNEUMATIQUES'],
+  ['platre', 'PLATRE'],
+  ['lampes', 'LAMPES'],
+  ['textiles', 'TEXTILES'],
+  ['papier', 'PAPIER'],
+  ['fenetres', 'FENETRES'],
+];
+
+const plain = (value) => words(value).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+
+/** The codes of Grand Lyon's `allowed_waste`, null when the list is missing. */
+export function lyonWaste(list) {
+  const entries = jsonList(list);
+  if (entries.length === 0) {
+    return null;
+  }
+  const codes = entries.map((entry) => {
+    const label = plain(entry?.['schema:category']);
+    return LYON_WASTE.find(([start]) => label.startsWith(start))?.[1];
+  });
+  return [...new Set(codes.filter(Boolean))];
+}
+
+/** "CHAMPAGNE-AU-MONT-D'OR" → "Champagne-au-Mont-d'Or", "LYON 5 ÈME" → "Lyon 5e". */
+export const lyonCity = (value) =>
+  titleCase(value)
+    .replace(/-(?:De|Du|Des|La|Le|Les|Et|En|Sur|Sous|Au|Aux)(?=-)/g, (part) => part.toLowerCase())
+    .replace(
+      /-([DL])'(\p{L})/gu,
+      (_, article, letter) => `-${article.toLowerCase()}'${letter.toUpperCase()}`,
+    )
+    .replace(
+      / (\d+) (?:Er|Ère|Ème|Eme)$/,
+      (_, number) => ` ${number}${number === '1' ? 'er' : 'e'}`,
+    );
+
+/** A JSON object or its text (`address`, declared as a string by the WFS). */
+const objectOf = (value) => {
+  if (typeof value === 'string') {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return {};
+    }
+  }
+  return value && typeof value === 'object' ? value : {};
+};
+
+// The Grand Lyon layer, as GeoJSON in WGS84, only the fields read.
+const LYON_URL =
+  'https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0' +
+  '&request=GetFeature&typeNames=metropole-de-lyon:gip_proprete.gipdecheterie_3_0_0' +
+  '&outputFormat=application/json&SRSNAME=EPSG:4326&count=100' +
+  '&propertyName=identifiant,nom,type_decheterie,address,horaires,allowed_waste,the_geom';
 
 export const SOURCES = [
   {
@@ -241,23 +321,68 @@ export const SOURCES = [
       });
     },
   },
+  {
+    id: 'lyon',
+    name: 'Lyon',
+    department: '69',
+    hasWaste: true,
+    url: LYON_URL,
+    // A WFS answer: GeoJSON features, `numberMatched` for the total.
+    recordsOf: (body) => ({
+      records: Array.isArray(body?.features) ? body.features : null,
+      total: Number(body?.numberMatched),
+    }),
+    toSite(source, feature) {
+      const record = feature.properties ?? {};
+      if (record.identifiant === null || record.identifiant === undefined) {
+        return null;
+      }
+      const address = objectOf(record.address);
+      const city = lyonCity(address.addressLocality);
+      const [lon, lat] = Array.isArray(feature.geometry?.coordinates)
+        ? feature.geometry.coordinates
+        : [];
+      // "Lyon 5" is a mobile centre: said in the name.
+      const mobile = /mobile/i.test(record.type_decheterie ?? '');
+      return site(
+        source,
+        {
+          id: record.identifiant,
+          name: `${mobile ? 'Déchèterie mobile' : 'Déchèterie'} ${words(record.nom)}`,
+          city,
+          address: `${words(address.streetAddress)}, ${words(address.postalCode)} ${city}`,
+          point: { lat, lon },
+          schedule: parseOpeningHours(record.horaires, { shareDate: true }),
+          raw: record.horaires,
+        },
+        { waste: lyonWaste(record.allowed_waste) },
+      );
+    },
+  },
 ];
 
 export const SOURCE_IDS = SOURCES.map((source) => source.id);
 export const sourceOf = (id) => SOURCES.find((source) => source.id === id) ?? null;
 
+/** The records of an Opendatasoft v2.1 answer and their total. */
+const opendatasoft = (body) => ({
+  records: Array.isArray(body?.results) ? body.results : null,
+  total: Number(body?.total_count),
+});
+
 /** The sites of a source: one request. */
 export async function readSource(fetchImpl, source) {
   const body = await getJson(fetchImpl, source.url, { maxBytes: 2e6 });
+  const { records, total } = (source.recordsOf ?? opendatasoft)(body);
   // An empty or unexpected answer is a failure: the last good read is kept.
-  if (!Array.isArray(body?.results) || body.results.length === 0) {
+  if (!Array.isArray(records) || records.length === 0) {
     throw new HttpError(`${hostOf(source.url)}: no record`);
   }
   // One page of 100: the sources hold a few dozen sites. More would be cut.
-  if (Number(body.total_count) > body.results.length) {
-    throw new HttpError(`${hostOf(source.url)}: more than ${body.results.length} records`);
+  if (total > records.length) {
+    throw new HttpError(`${hostOf(source.url)}: more than ${records.length} records`);
   }
-  return body.results.map((record) => source.toSite(source, record ?? {})).filter(Boolean);
+  return records.map((record) => source.toSite(source, record ?? {})).filter(Boolean);
 }
 
 /** Distance in km between two points (haversine). */

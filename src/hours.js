@@ -4,7 +4,9 @@
 //
 // Two formats reach this file:
 //
-//   - the OpenStreetMap `opening_hours` syntax (Toulouse, Bordeaux, Tours),
+//   - the OpenStreetMap `opening_hours` syntax (Toulouse, Bordeaux, Tours,
+//     Lyon, the latter with its own way of sharing a date, see
+//     parseSharedRule),
 //     a subset of it: weekdays and ranges ("Mo-Fr,Su"), public holidays
 //     ("PH off"), months ("Apr-Sep"), days of a month with an optional year
 //     ("2026 Jun 16-28", "Dec 24,31", "2026 Jul 27-2026 Aug 01"), times
@@ -166,56 +168,99 @@ export function parseDateSelector(text) {
   return null;
 }
 
+/** One rule ("2026 Dec 24 Th 09:00-12:00"), or null outside the subset. */
+function parseRule(text) {
+  const rule = text
+    .trim()
+    .replace(/\s*,\s*/g, ',')
+    .replace(/\s*-\s*/g, '-');
+  const tokens = rule.split(/\s+/);
+  const last = tokens.pop();
+  let slots;
+  if (last === 'off' || last === 'closed') {
+    slots = [];
+  } else {
+    slots = parseTimes(last);
+    if (!slots) {
+      return null;
+    }
+  }
+  let weekdays = null;
+  let ph = false;
+  if (
+    tokens.length > 0 &&
+    /^(Mo|Tu|We|Th|Fr|Sa|Su|PH)([-,](Mo|Tu|We|Th|Fr|Sa|Su|PH))*$/.test(tokens.at(-1))
+  ) {
+    const parsed = parseWeekdays(tokens.pop());
+    if (!parsed) {
+      return null;
+    }
+    ({ weekdays, ph } = parsed);
+  }
+  let date = null;
+  if (tokens.length > 0) {
+    date = parseDateSelector(tokens.join(' '));
+    if (!date) {
+      return null;
+    }
+  }
+  return { weekdays, ph, date, slots };
+}
+
+// ", Sa 09:00-17:00": a comma after a time or a closure, then a weekday.
+const SHARED_PART = /(?<=\d|off|closed)\s*,\s*(?=(?:Mo|Tu|We|Th|Fr|Sa|Su|PH)\b)/;
+
+/**
+ * The rules of one ";" part written the Grand Lyon way: "2026 Apr 01-2026 Oct
+ * 31 Mo-Fr 08:30-18:00, Sa 08:30-18:30, Su 09:00-12:00". The date of the
+ * first part is shared by the next ones (the publisher's meaning, confirmed by
+ * its `openinghoursspecification`; strict OpenStreetMap would apply them all
+ * year). The parts must cover distinct days, so that reading them one after
+ * the other changes nothing.
+ */
+function parseSharedRule(text) {
+  const parts = text.split(SHARED_PART).map((part) => parseRule(part));
+  if (parts.some((part) => !part)) {
+    return null;
+  }
+  const seen = new Set();
+  for (const part of parts) {
+    if (parts.length > 1 && (!part.weekdays || part.ph)) {
+      return null;
+    }
+    for (const weekday of part.weekdays ?? []) {
+      if (seen.has(weekday)) {
+        return null;
+      }
+      seen.add(weekday);
+    }
+  }
+  return parts.map((part) => ({ ...part, date: part.date ?? parts[0].date }));
+}
+
 /**
  * An OpenStreetMap `opening_hours` value, as rules; null when empty or when
- * a rule is outside the subset read here.
+ * a rule is outside the subset read here. `shareDate` reads the Grand Lyon
+ * writing (see parseSharedRule).
  * @returns {{ rules: object[], phExplicit: boolean }|null}
  */
-export function parseOpeningHours(text) {
+export function parseOpeningHours(text, { shareDate = false } = {}) {
   const value = String(text ?? '').trim();
   if (!value) {
     return null;
   }
   const rules = [];
   for (const raw of value.split(';')) {
-    const rule = raw
-      .trim()
-      .replace(/\s*,\s*/g, ',')
-      .replace(/\s*-\s*/g, '-');
-    if (!rule) {
+    // Comments only in the Grand Lyon writing, an unclosed one up to the end of the rule.
+    const rule = shareDate ? raw.replace(/"[^"]*(?:"|$)/g, ' ') : raw;
+    if (!rule.trim()) {
       continue;
     }
-    const tokens = rule.split(/\s+/);
-    const last = tokens.pop();
-    let slots;
-    if (last === 'off' || last === 'closed') {
-      slots = [];
-    } else {
-      slots = parseTimes(last);
-      if (!slots) {
-        return null;
-      }
+    const parsed = shareDate ? parseSharedRule(rule) : [parseRule(rule)];
+    if (!parsed || parsed.some((rule) => !rule)) {
+      return null;
     }
-    let weekdays = null;
-    let ph = false;
-    if (
-      tokens.length > 0 &&
-      /^(Mo|Tu|We|Th|Fr|Sa|Su|PH)([-,](Mo|Tu|We|Th|Fr|Sa|Su|PH))*$/.test(tokens.at(-1))
-    ) {
-      const parsed = parseWeekdays(tokens.pop());
-      if (!parsed) {
-        return null;
-      }
-      ({ weekdays, ph } = parsed);
-    }
-    let date = null;
-    if (tokens.length > 0) {
-      date = parseDateSelector(tokens.join(' '));
-      if (!date) {
-        return null;
-      }
-    }
-    rules.push({ weekdays, ph, date, slots });
+    rules.push(...parsed);
   }
   return finish(rules);
 }

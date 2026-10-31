@@ -34,8 +34,8 @@ pushing.
 index.js                          SDK wiring only: handlers registered before connect()
 src/app.js                        registers every SDK handler, shared by index.js and the tests
 src/service.js                    runtime: daily reads, house location, minute clock, states, triggers, texts
-src/sources.js                    the four open data sources, records turned into sites, distances
-src/hours.js                      OpenStreetMap subset and Strasbourg periods, open/closed/next at an instant
+src/sources.js                    the five open data sources, records turned into sites, distances
+src/hours.js                      OpenStreetMap subset (+ Grand Lyon writing), Strasbourg periods, open/closed/next
 src/holidays.js                   French public holidays, offline (Alsace-Moselle, overseas)
 src/clock.js                      dates and local time
 src/devices.js                    device of a site and its states
@@ -47,7 +47,7 @@ src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults)
 gladys-assistant-integration.json manifest: name, config_schema, actions, image...
 docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (mandatory)
 test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
-test/fixtures/api                 real answers of the four sources (2026-10-30)
+test/fixtures/api                 real answers of the five sources (2026-10-30, Lyon 2026-10-31)
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -261,7 +261,8 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 
 ## Déchèteries (cette intégration)
 
-- **Sources retenues le 30/10/2026** (Opendatasoft v2.1, sans clé, une requête chacune, `select` limité) :
+- **Sources retenues le 30/10/2026** (Opendatasoft v2.1, sans clé, une requête chacune, `select` limité ;
+  `recordsOf` d'une source pour un autre format, comme le WFS de Lyon) :
   Strasbourg (`lieux_decheteries`, 6 sites, `periods` JSON, `dayOfWeek` **0 = lundi**, vérifié par La
   Wantzenau lun./mer./sam. et le dimanche matin des grandes déchèteries ; identifiant = le numéro de
   `friendlyurl`), Toulouse Métropole (`dechetteries_tm`, données Decoset **de 2022**, `equip_uid`,
@@ -269,6 +270,21 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
   `datahub.bordeaux-metropole.fr`, `gid`, horaires OSM, `acceptes` en codes, sauf Floirac qui y met une
   phrase ; les 20 centres mobiles n'ont que `PH off` : non proposés), Tours Métropole (`publidata_uuid`,
   horaires OSM avec exceptions datées).
+- **Lyon (ajoutée le 31/10/2026, demande de prohand, t/11455)** : WFS GeoServer de data.grandlyon.com,
+  couche `metropole-de-lyon:gip_proprete.gipdecheterie_3_0_0`, **publique** (pas d'identifiants Grand Lyon,
+  contrairement à la couche trafic de gladys-trafic), GeoJSON en EPSG:4326, `numberMatched` pour le total,
+  licence Ouverte 2.0 (data.gouv.fr). Identifiant `identifiant` (pas `gid`, numéro de ligne différent pour
+  les mobiles), 31 sites dont 28 avec horaires (deux « Temporaire » sans horaires, Lyon 7 - Prado
+  `closed`). Le champ structuré `openinghoursspecification` est **faux** (aucune ligne pour l'hiver
+  2026-2027 de Caluire, `validFrom` après `validThrough`) : seul `horaires` est lu. Écriture propre à
+  Lyon (`parseOpeningHours(…, { shareDate: true })`) : « DATE Mo-Fr …, Sa …, Su … » partage la date entre
+  les parties séparées par une virgule (en OSM strict, Sa et Su vaudraient toute l'année), commentaires
+  `"…"` ignorés, y compris non refermés (Mions - Corbas) ; des parties qui couvrent les mêmes jours rendent
+  l'horaire illisible. Pas de `PH` : les fermetures datées (Toussaint, Noël…) s'appliquent, les autres
+  fériés suivent la supposition commune (Genas ne publie aucune fermeture). Les déchèteries mobiles
+  (« Déchèterie mobile Lyon 5 ») ont quelques dates par mois, publiées un à deux mois à l'avance : au-delà
+  de `SEARCH_DAYS` (14 j), prochaine ouverture « inconnue ». `allowed_waste` lu par début de libellé
+  (`LYON_WASTE`) ; communes en majuscules sans accents (« VENISSIEUX ») mises en forme par `lyonCity`.
 - **Écartées** : Rennes (`horaires` rempli pour 1 site sur 24), Nantes (filières seules), Angers
   (calendrier jour par jour non tenu : la plupart des sites s'arrêtent en septembre 2026, et « Toussaint N »
   côtoie « Sauf été O » le même jour), Aix-Marseille (texte libre), Seine Ouest (2 sites). Bordeaux publie
@@ -282,7 +298,7 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
   1er mai et le 25 décembre, et les autres fériés fermé sauf si le site ouvre le dimanche **de la même
   semaine** (saison de Blagnac comprise), avec « a priori » dans les textes.
 - **Appareils** : identifiant `site:<source>-<id>` ; les fonctionnalités dépendent de la source seulement
-  (déchets pour Bordeaux), jamais des données du jour. Un site ajouté reste lu même si sa métropole est
+  (déchets pour Bordeaux et Lyon), jamais des données du jour. Un site ajouté reste lu même si sa métropole est
   décochée ; s'il perd ses horaires, plus d'état « ouvert ».
 - **Maison** : `location: true`, `getHouses()` à chaque lecture ; sans maison localisée, seules les
   métropoles cochées sont proposées. Les coordonnées restent dans le conteneur.

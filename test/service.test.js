@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // The integration end to end, against the SDK's fake Gladys and the real
-// answers of the four sources captured on 2026-10-30.
+// answers of the five sources captured on 2026-10-30 (Lyon: 2026-10-31).
 // -----------------------------------------------------------------------------
 
 import { test } from 'node:test';
@@ -65,7 +65,7 @@ test('around a located house: the nearest sites within the distance, every sourc
     'Déchèterie de Cornebarrieu',
     'Déchèterie de Turlu',
   ]);
-  assert.equal(world.network.calls.length, 4);
+  assert.equal(world.network.calls.length, 5);
   const message = await action(world, 'status');
   assert.match(message.fr, /les 3 déchèteries les plus proches à moins de 30 km/);
   assert.match(message.fr, /■ Toulouse : 20 déchèteries avec horaires/);
@@ -151,6 +151,53 @@ test('Bordeaux: the accepted waste as a text and five binaries', async (t) => {
   // A Saturday and Sunday site: Carle Vernet.
   const carle = await create(world, 'Carle Vernet');
   assert.equal(lastState(world, carle, 'next'), 'tomorrow at 07:00');
+});
+
+test('Lyon: WFS answer, mobile centres, the accepted waste of Grand Lyon', async (t) => {
+  const world = await createWorld({ config: { areas: ['lyon'], language: 'en' } });
+  t.after(() => world.app.stop());
+  assert.deepEqual(
+    world.network.calls.map((call) => call.url),
+    [urlOf('lyon')],
+  );
+  // 31 records: two temporary sites without hours and a closed mobile centre are not offered.
+  assert.equal(world.fake.discoveredDevices.length, 28);
+  assert.ok(names(world).includes('Déchèterie mobile Lyon 5'));
+  assert.ok(!names(world).some((name) => name.includes('Prado')));
+  const caluire = await create(world, 'Caluire');
+  assert.equal(caluire.external_id, 'ext:test-integration:site:lyon-1');
+  assert.deepEqual(
+    caluire.params.map((param) => param.value),
+    ['lyon-1', 'Caluire-et-Cuire', '62 Impasse des Lièvres, 69300 Caluire-et-Cuire'],
+  );
+  assert.equal(caluire.features.length, 10);
+  // Friday 30/10/2026 at 10:00, the summer hours (until 31/10).
+  assert.equal(lastState(world, caluire, 'open'), 1);
+  assert.equal(
+    lastState(world, caluire, 'waste'),
+    'green waste, rubble, wood, metals, cardboard, electrical appliances, furniture, household chemicals, engine oil, cooking oil, car batteries, batteries, bulky waste, plaster, lamps, textiles, paper',
+  );
+  assert.equal(lastState(world, caluire, 'bulky'), 1);
+  // A mobile centre: a few dates a month, small waste only.
+  const lyon5 = await create(world, 'Lyon 5');
+  assert.equal(lastState(world, lyon5, 'open'), 0);
+  assert.equal(lastState(world, lyon5, 'rubble'), 0);
+  assert.equal(lastState(world, lyon5, 'next'), 'on 13 Nov at 14:00');
+});
+
+test('Lyon: a WFS answer cut or without features is a failure', async (t) => {
+  const world = await createWorld({ config: { areas: ['lyon'] } });
+  t.after(() => world.app.stop());
+  const full = world.network.routes[urlOf('lyon')];
+  world.network.routes[urlOf('lyon')] = { ...full, numberMatched: 120 };
+  world.clock.advance(25 * 60 * MINUTE);
+  await world.service.refresh();
+  assert.match((await action(world, 'status')).en, /more than 31 records/);
+  world.network.routes[urlOf('lyon')] = { type: 'FeatureCollection', features: [] };
+  await world.service.refresh();
+  assert.match((await action(world, 'status')).en, /no record/);
+  // The last good read is kept.
+  assert.equal(world.fake.discoveredDevices.length, 28);
 });
 
 test('a site whose hours become unreadable keeps its device, without open state', async (t) => {

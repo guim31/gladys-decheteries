@@ -8,14 +8,14 @@ The hours come from the **open data** of the metropolitan areas. **No account, n
 > public holiday or after a change of season.
 
 Unofficial integration, not affiliated with the metropolitan areas nor with the operators. Tested
-against the real answers of the four sources (2026-10-30), not yet on a real Gladys instance:
-feedback welcome.
+against the real answers of the five sources (2026-10-30, Lyon on 2026-10-31), not yet on a real
+Gladys instance: feedback welcome.
 
 ## What you get
 
 - A **device per recycling centre** you add: open now, today's hours, closing time, next opening.
-- In Bordeaux, the **accepted waste** as a text, and five yes/no features: green waste, rubble,
-  wood, electrical appliances, bulky waste.
+- In Bordeaux and Lyon, the **accepted waste** as a text, and five yes/no features: green waste,
+  rubble, wood, electrical appliances, bulky waste.
 - A **widget** "Recycling centres": your sites on one row each, green when open, orange in the last
   half-hour, red when closed.
 - Three **scene triggers**: a site opens, a site closes soon (30 minutes by default), a site closes.
@@ -41,10 +41,10 @@ feedback welcome.
 
 - **Metropolitan areas**: every recycling centre with hours of the areas ticked is offered.
   Available today: Strasbourg (Eurométropole), Toulouse Métropole (Decoset), Bordeaux Métropole, Tours
-  Métropole Val de Loire.
+  Métropole Val de Loire, Métropole de Lyon.
 - **Nearest recycling centres**: also offer this many sites nearest to the house (3 by default, 0 to
   turn off), within the **maximum distance** (30 km as the crow flies by default). Nothing to tick if
-  you live in one of the four areas.
+  you live in one of the five areas.
 - **Closing soon (minutes)**: when the "Recycling centre closes soon" trigger fires (30 by default).
 - **Language of names and messages**: French by default. Feature names are fixed when a device is
   added; the texts follow the language at once.
@@ -61,14 +61,14 @@ last read and the errors.
 
 ## Devices
 
-| Feature             | Type        | Value                                                         |
-| ------------------- | ----------- | ------------------------------------------------------------- |
-| Open now            | binary      | 1 open, 0 closed; no value when the hours cannot be read      |
-| Today's hours       | text        | "09:00–12:00, 14:00–18:00", "Closed today", "Public holiday…" |
-| Closing time        | text        | "18:00" while open, "Closed" otherwise                        |
-| Next opening        | text        | "tomorrow at 09:00", "Sunday at 10:00"                        |
-| Accepted waste      | text        | Bordeaux only: "green waste, rubble, wood…"                   |
-| Accepts green waste | binary (×5) | Bordeaux only: green waste, rubble, wood, electrical, bulky   |
+| Feature             | Type        | Value                                                           |
+| ------------------- | ----------- | --------------------------------------------------------------- |
+| Open now            | binary      | 1 open, 0 closed; no value when the hours cannot be read        |
+| Today's hours       | text        | "09:00–12:00, 14:00–18:00", "Closed today", "Public holiday…"   |
+| Closing time        | text        | "18:00" while open, "Closed" otherwise                          |
+| Next opening        | text        | "tomorrow at 09:00", "Sunday at 10:00"                          |
+| Accepted waste      | text        | Bordeaux and Lyon: "green waste, rubble, wood…"                 |
+| Accepts green waste | binary (×5) | Bordeaux and Lyon: green waste, rubble, wood, electrical, bulky |
 
 The values are computed every minute by the integration, without any request.
 
@@ -107,6 +107,7 @@ to a speaker, or continue only if `open_count` is 1.
 | Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm`  | 20               | not said        |
 | Bordeaux   | datahub.bordeaux-metropole.fr, real-time sites | 18               | closed (PH off) |
 | Tours      | data.tours-metropole.fr, recycling centres     | 7                | closed (PH off) |
+| Lyon       | data.grandlyon.com, WFS `gipdecheterie_3_0_0`  | 28               | dated closures  |
 
 - Each area is one request **once a day** (an hour later after a failure), only for the areas
   needed. Open or closed is computed every minute from the hours kept, in the time zone of Paris.
@@ -114,7 +115,11 @@ to a speaker, or continue only if `open_count` is 1.
   a site does on a holiday, it is **assumed closed** on 1 January, 1 May and 25 December, and on the
   other holidays closed unless the site opens on Sundays: the texts say "assumed".
 - Dated exceptions published by Tours (summer hours, works, Christmas Eve) are applied.
-- Licences: Licence Ouverte / Etalab 2.0 for the four sources.
+- Lyon writes its seasons as "2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa …, Su …": the dates apply to every
+  day of the rule, as the Métropole means it. Its dated closures (1 November, Christmas…) are
+  applied; its other holidays follow the assumption above. Grand Lyon serves this layer to everyone:
+  no Grand Lyon account is needed.
+- Licences: Licence Ouverte / Etalab 2.0 for the five sources.
 
 ## Troubleshooting
 
@@ -127,17 +132,20 @@ to a speaker, or continue only if `open_count` is 1.
 
 ## Limitations
 
-- Four metropolitan areas only: the others publish no hours as open data (Rennes gives hours for 1
+- Five metropolitan areas only: the others publish no hours as open data (Rennes gives hours for 1
   site in 24, Nantes only the waste, Angers a calendar no longer kept up). Tell us about another
   source.
 - The Toulouse data (Decoset) was last updated in 2022.
 - The mobile recycling centres of Bordeaux publish no hours: they are not offered.
-- The accepted waste is known in Bordeaux only.
+- The accepted waste is known in Bordeaux and Lyon only.
+- The mobile recycling centres of Lyon open a few days a month, published a month or two ahead: a
+  next opening more than 14 days away shows as unknown.
 - Access conditions (badge, residents only, vehicle size) are not shown: check with the operator.
 - Developed without visiting the sites: feedback welcome.
 
 ## Credits
 
 Data: Eurométropole de Strasbourg, Toulouse Métropole and Decoset, Bordeaux Métropole, Tours
-Métropole Val de Loire (Licence Ouverte). Public holiday rules as in date-holidays. Built on the
+Métropole Val de Loire, Métropole de Lyon (Licence Ouverte). Public holiday rules as in
+date-holidays. Built on the
 [Gladys integration SDK](https://github.com/GladysAssistant/integration-sdk-js).

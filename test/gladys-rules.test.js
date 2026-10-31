@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 // Conformity with the Gladys core, on every device built from the real
-// answers of the four sources (every site with hours, the waste features of
-// Bordeaux), in every feature-name language.
+// answers of the five sources (every site with hours, the waste features of
+// Bordeaux and Lyon), in every feature-name language.
 //
 // The table (test/fixtures/gladys-feature-table.json) is extracted from the
 // core code: a category/type couple missing there shows as "undefined" or
@@ -31,15 +31,16 @@ for (const language of LANGUAGES) {
     const devices = world.fake.discoveredDevices;
     // Every site with hours in the capture of 2026-10-30: 6 in Strasbourg,
     // 20 around Toulouse, 18 around Bordeaux (the 20 mobile centres have no
-    // hours), 7 around Tours.
-    assert.equal(devices.length, 6 + 20 + 18 + 7);
+    // hours), 7 around Tours, 28 around Lyon (one closed mobile centre and two
+    // temporary sites have no hours).
+    assert.equal(devices.length, 6 + 20 + 18 + 7 + 28);
     for (const source of SOURCE_IDS) {
       assert.ok(
         devices.some((device) => device.params.some((p) => p.value.startsWith(`${source}-`))),
         `a site of ${source}`,
       );
     }
-    // The waste features of Bordeaux.
+    // The waste features of Bordeaux and Lyon.
     assert.ok(devices.some((device) => device.features.length === 10));
 
     const deviceIds = new Set();
