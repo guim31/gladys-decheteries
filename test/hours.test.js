@@ -1,6 +1,7 @@
 // -----------------------------------------------------------------------------
 // Opening hours: the OpenStreetMap subset and the periods of Strasbourg, on
-// the real values of the sources (2026-10-30), public holidays included.
+// the real values of the sources (2026-10-30, Lyon 2026-10-31), public
+// holidays included.
 // -----------------------------------------------------------------------------
 
 import { test } from 'node:test';
@@ -14,6 +15,11 @@ const osm = (source, field, name) =>
   parseOpeningHours(record(source, (r) => JSON.stringify(r).includes(name))[field]);
 const toulouse = (name) => osm('toulouse', 'equip_ouverture', name);
 const tours = (name) => osm('tours', 'opening_hours', name);
+const lyon = (name) =>
+  parseOpeningHours(
+    fixtureJson('lyon.json').features.find((f) => f.properties.nom === name).properties.horaires,
+    { shareDate: true },
+  );
 const strasbourg = (name) =>
   parsePeriods(record('strasbourg', (r) => r.name.includes(name)).periods);
 
@@ -175,4 +181,43 @@ test('a dated period of Strasbourg without hours is a closure', () => {
   const closed = parsePeriods(JSON.stringify(periods));
   assert.equal(hours(closed, '2026-12-08', '67'), '');
   assert.equal(hours(closed, '2027-01-04', '67'), '8-18.75');
+});
+
+test('Grand Lyon: the date of a rule is shared by its comma parts, comments dropped', () => {
+  const caluire = lyon('Caluire-et-Cuire');
+  // "2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa 08:30-18:30, Su …": Saturday in summer…
+  assert.equal(hours(caluire, '2026-10-31', '69'), '8.5-18.5');
+  // …and the usual Saturday the week after, never the summer one all year.
+  assert.equal(hours(caluire, '2026-11-07', '69'), '9-17');
+  assert.equal(hours(caluire, '2026-11-02', '69'), '9-12,14-17');
+  assert.equal(hours(caluire, '2027-04-04', '69'), '9-12'); // Sunday
+  // "2026 Dec 24 Th 09:00-12:00,14:00-16:00" and "2026 Nov 11 closed".
+  assert.equal(hours(caluire, '2026-12-24', '69'), '9-12,14-16');
+  assert.equal(hours(caluire, '2026-11-11', '69'), '');
+  // Mions - Corbas forgets the closing quotes of its comments: read the same.
+  assert.deepEqual(
+    ['2026-10-31', '2026-11-07', '2026-12-24'].map((date) =>
+      hours(lyon('Mions - Corbas'), date, '69'),
+    ),
+    ['8.5-18.5', '9-17', '9-12,14-16'],
+  );
+  // A mobile centre: a few dates.
+  const lyon5 = lyon('Lyon 5');
+  assert.equal(hours(lyon5, '2026-11-13', '69'), '14-20');
+  assert.equal(hours(lyon5, '2026-11-11', '69'), '');
+  // "closed" only: no hours.
+  assert.equal(lyon('Lyon 7 - Prado'), null);
+});
+
+test('Grand Lyon writing: only with the option, and parts over the same days are rejected', () => {
+  const text = 'Mo-Fr 09:00-12:00, Sa 09:00-17:00 "Hiver"';
+  assert.equal(parseOpeningHours(text), null);
+  assert.equal(hours(parseOpeningHours(text, { shareDate: true }), '2026-11-07', '69'), '9-17');
+  for (const overlapping of [
+    'Mo-Fr 09:00-12:00, Fr 14:00-17:00',
+    '2026 Dec 24 09:00-12:00, Th 14:00-16:00',
+    'Mo-Sa 09:00-12:00, PH off',
+  ]) {
+    assert.equal(parseOpeningHours(overlapping, { shareDate: true }), null, overlapping);
+  }
 });

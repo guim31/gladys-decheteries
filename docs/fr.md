@@ -8,15 +8,15 @@ horaires viennent de l'**open data** des métropoles. **Sans compte ni clé.**
 > trajet, surtout un jour férié ou après un changement de saison.
 
 Intégration non officielle, sans lien avec les métropoles ni avec les gestionnaires. Testée sur les
-vraies réponses des quatre sources (30/10/2026), pas encore sur une vraie instance Gladys : vos
-retours sont les bienvenus.
+vraies réponses des cinq sources (30/10/2026, Lyon le 31/10/2026), pas encore sur une vraie instance
+Gladys : vos retours sont les bienvenus.
 
 ## Ce que vous obtenez
 
 - Un **appareil par déchèterie** ajoutée : ouverte maintenant, horaires du jour, heure de fermeture,
   prochaine ouverture.
-- À Bordeaux, les **déchets acceptés** en texte, et cinq fonctionnalités oui/non : déchets verts,
-  gravats, bois, appareils électriques, encombrants.
+- À Bordeaux et à Lyon, les **déchets acceptés** en texte, et cinq fonctionnalités oui/non : déchets
+  verts, gravats, bois, appareils électriques, encombrants.
 - Un **widget** « Déchèteries » : vos déchèteries sur une ligne chacune, en vert quand c'est ouvert,
   en orange la dernière demi-heure, en rouge quand c'est fermé.
 - Trois **déclencheurs de scène** : une déchèterie ouvre, ferme bientôt (30 minutes par défaut),
@@ -44,10 +44,10 @@ retours sont les bienvenus.
 
 - **Métropoles** : toutes les déchèteries avec horaires des métropoles cochées sont proposées.
   Disponibles aujourd'hui : Strasbourg (Eurométropole), Toulouse Métropole (Decoset), Bordeaux
-  Métropole, Tours Métropole Val de Loire.
+  Métropole, Tours Métropole Val de Loire, Métropole de Lyon.
 - **Déchèteries les plus proches** : propose aussi ce nombre de déchèteries les plus proches de la
   maison (3 par défaut, 0 pour désactiver), dans la **distance maximale** (30 km à vol d'oiseau par
-  défaut). Rien à cocher si vous habitez l'une des quatre métropoles.
+  défaut). Rien à cocher si vous habitez l'une des cinq métropoles.
 - **Fermeture prochaine (minutes)** : quand se déclenche « Une déchèterie ferme bientôt » (30 par
   défaut).
 - **Langue des noms et des messages** : français par défaut. Les noms des fonctionnalités sont figés
@@ -66,14 +66,14 @@ déchèteries proposées, la dernière lecture et les erreurs.
 
 ## Appareils
 
-| Fonctionnalité            | Type         | Valeur                                                                     |
-| ------------------------- | ------------ | -------------------------------------------------------------------------- |
-| Ouvert maintenant         | binaire      | 1 ouvert, 0 fermé ; pas de valeur si les horaires sont illisibles          |
-| Horaires du jour          | texte        | « 09:00–12:00, 14:00–18:00 », « Fermé aujourd'hui », « Jour férié… »       |
-| Heure de fermeture        | texte        | « 18:00 » quand c'est ouvert, « Fermé » sinon                              |
-| Prochaine ouverture       | texte        | « demain à 09:00 », « dimanche à 10:00 »                                   |
-| Déchets acceptés          | texte        | Bordeaux seulement : « déchets verts, gravats, bois… »                     |
-| Accepte les déchets verts | binaire (×5) | Bordeaux seulement : déchets verts, gravats, bois, électrique, encombrants |
+| Fonctionnalité            | Type         | Valeur                                                                   |
+| ------------------------- | ------------ | ------------------------------------------------------------------------ |
+| Ouvert maintenant         | binaire      | 1 ouvert, 0 fermé ; pas de valeur si les horaires sont illisibles        |
+| Horaires du jour          | texte        | « 09:00–12:00, 14:00–18:00 », « Fermé aujourd'hui », « Jour férié… »     |
+| Heure de fermeture        | texte        | « 18:00 » quand c'est ouvert, « Fermé » sinon                            |
+| Prochaine ouverture       | texte        | « demain à 09:00 », « dimanche à 10:00 »                                 |
+| Déchets acceptés          | texte        | Bordeaux et Lyon : « déchets verts, gravats, bois… »                     |
+| Accepte les déchets verts | binaire (×5) | Bordeaux et Lyon : déchets verts, gravats, bois, électrique, encombrants |
 
 Les valeurs sont calculées chaque minute par l'intégration, sans aucune requête.
 
@@ -110,12 +110,13 @@ par message ou sur une enceinte, ou continuez seulement si `open_count` vaut 1.
 
 ## Données et rafraîchissement
 
-| Métropole  | Source                                           | Avec horaires | Jours fériés   |
-| ---------- | ------------------------------------------------ | ------------- | -------------- |
-| Strasbourg | data.strasbourg.eu, `lieux_decheteries`          | 6             | non précisé    |
-| Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm`    | 20            | non précisé    |
-| Bordeaux   | datahub.bordeaux-metropole.fr, temps réel        | 18            | fermé (PH off) |
-| Tours      | data.tours-metropole.fr, équipements déchèteries | 7             | fermé (PH off) |
+| Métropole  | Source                                           | Avec horaires | Jours fériés      |
+| ---------- | ------------------------------------------------ | ------------- | ----------------- |
+| Strasbourg | data.strasbourg.eu, `lieux_decheteries`          | 6             | non précisé       |
+| Toulouse   | data.toulouse-metropole.fr, `dechetteries_tm`    | 20            | non précisé       |
+| Bordeaux   | datahub.bordeaux-metropole.fr, temps réel        | 18            | fermé (PH off)    |
+| Tours      | data.tours-metropole.fr, équipements déchèteries | 7             | fermé (PH off)    |
+| Lyon       | data.grandlyon.com, WFS `gipdecheterie_3_0_0`    | 28            | fermetures datées |
 
 - Chaque métropole, c'est une requête **une fois par jour** (une heure plus tard après un échec),
   seulement pour les métropoles utiles. Ouvert ou fermé se calcule chaque minute d'après les
@@ -126,7 +127,11 @@ par message ou sur une enceinte, ou continuez seulement si `open_count` vaut 1.
   « a priori ».
 - Les exceptions datées publiées par Tours (horaires d'été, travaux, veille de Noël) sont
   appliquées.
-- Licences : Licence Ouverte / Etalab 2.0 pour les quatre sources.
+- Lyon écrit ses saisons « 2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa …, Su … » : les dates valent pour
+  tous les jours de la règle, comme l'entend la Métropole. Ses fermetures datées (Toussaint, Noël…)
+  sont appliquées ; ses autres jours fériés suivent la supposition ci-dessus. Grand Lyon sert cette
+  couche à tous : aucun compte Grand Lyon n'est nécessaire.
+- Licences : Licence Ouverte / Etalab 2.0 pour les cinq sources.
 
 ## Dépannage
 
@@ -140,12 +145,14 @@ par message ou sur une enceinte, ou continuez seulement si `open_count` vaut 1.
 
 ## Limites
 
-- Quatre métropoles seulement : les autres ne publient pas d'horaires en open data (Rennes donne les
+- Cinq métropoles seulement : les autres ne publient pas d'horaires en open data (Rennes donne les
   horaires d'une déchèterie sur 24, Nantes seulement les déchets, Angers un calendrier plus tenu à
   jour). Signalez-nous une autre source.
 - Les données de Toulouse (Decoset) datent de 2022.
 - Les centres de recyclage mobiles de Bordeaux ne publient pas d'horaires : ils ne sont pas proposés.
-- Les déchets acceptés ne sont connus qu'à Bordeaux.
+- Les déchets acceptés ne sont connus qu'à Bordeaux et à Lyon.
+- Les déchèteries mobiles de Lyon ouvrent quelques jours par mois, publiés un ou deux mois à
+  l'avance : une prochaine ouverture à plus de 14 jours s'affiche « inconnue ».
 - Les conditions d'accès (badge, habitants seulement, gabarit du véhicule) ne sont pas affichées :
   voyez le gestionnaire.
 - Développée sans visiter les sites : vos retours sont les bienvenus.
@@ -153,5 +160,6 @@ par message ou sur une enceinte, ou continuez seulement si `open_count` vaut 1.
 ## Crédits
 
 Données : Eurométropole de Strasbourg, Toulouse Métropole et Decoset, Bordeaux Métropole, Tours
-Métropole Val de Loire (Licence Ouverte). Règles des jours fériés comme date-holidays. Construite avec
-le [SDK d'intégration de Gladys](https://github.com/GladysAssistant/integration-sdk-js).
+Métropole Val de Loire, Métropole de Lyon (Licence Ouverte). Règles des jours fériés comme
+date-holidays. Construite avec le
+[SDK d'intégration de Gladys](https://github.com/GladysAssistant/integration-sdk-js).

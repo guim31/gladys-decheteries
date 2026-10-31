@@ -10,6 +10,14 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+### Added
+
+- Métropole de Lyon: its 28 recycling centres with hours (fixed and mobile
+  ones) from the open data of Grand Lyon, with summer and winter hours, dated
+  closures and the accepted waste. No account needed.
+- Accepted waste: bulky waste, plaster, lamps, textiles, paper and windows, as
+  Lyon lists them.
+
 ## [1.0.0] - 2026-10-30
 
 ### Added

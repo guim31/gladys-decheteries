@@ -1,0 +1,1226 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.1",
+      "geometry": { "type": "Point", "coordinates": [4.865046, 45.803689] },
+      "properties": {
+        "identifiant": 1,
+        "nom": "Caluire-et-Cuire",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69300",
+          "streetAddress": "62 Impasse des Lièvres",
+          "addressCountry": "France",
+          "addressLocality": "CALUIRE-ET-CUIRE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          { "schema:category": "Meubles" }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.30",
+      "geometry": { "type": "Point", "coordinates": [4.878389, 45.768558] },
+      "properties": {
+        "identifiant": 29,
+        "nom": "Villeurbanne - Chanoine Boursier",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69100",
+          "streetAddress": "Place Chanoine - Boursier",
+          "addressCountry": "France",
+          "addressLocality": "VILLEURBANNE"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Encombrants" }
+        ],
+        "horaires": "2026 Nov 04 We 14:00-20:00; 2026 Dec 09 We 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.10",
+      "geometry": { "type": "Point", "coordinates": [4.817787, 45.885218] },
+      "properties": {
+        "identifiant": 10,
+        "nom": "Neuville - Genay",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69250",
+          "streetAddress": "Avenue des Frères Lumière",
+          "addressCountry": "France",
+          "addressLocality": "NEUVILLE-SUR-SAONE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Encombrants" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.13",
+      "geometry": { "type": "Point", "coordinates": [4.742631, 45.757099] },
+      "properties": {
+        "identifiant": 13,
+        "nom": "Saint-Genis-les-Ollières",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69290",
+          "streetAddress": "2 Rue Louis Pradel",
+          "addressCountry": "France",
+          "addressLocality": "SAINT-GENIS-LES-OLLIERES"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.14",
+      "geometry": { "type": "Point", "coordinates": [4.922318, 45.695793] },
+      "properties": {
+        "identifiant": 14,
+        "nom": "Saint-Priest",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69800",
+          "streetAddress": "Rue du Mâconnais",
+          "addressCountry": "France",
+          "addressLocality": "SAINT-PRIEST"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Papier" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.17",
+      "geometry": { "type": "Point", "coordinates": [4.8971, 45.776241] },
+      "properties": {
+        "identifiant": 17,
+        "nom": "Villeurbanne - Brinon",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69100",
+          "streetAddress": "Rue Alfred Brinon",
+          "addressCountry": "France",
+          "addressLocality": "VILLEURBANNE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Papier" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.18",
+      "geometry": { "type": "Point", "coordinates": [4.9008, 45.754656] },
+      "properties": {
+        "identifiant": 18,
+        "nom": "Villeurbanne - Kruger",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69100",
+          "streetAddress": "100 Avenue Paul Krüger",
+          "addressCountry": "France",
+          "addressLocality": "VILLEURBANNE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Papier" },
+          { "schema:category": "Meubles" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.22",
+      "geometry": { "type": "Point", "coordinates": [4.867899, 45.689969] },
+      "properties": {
+        "identifiant": 31,
+        "nom": "Vénissieux Temporaire",
+        "type_decheterie": "Temporaire",
+        "address": {
+          "postalCode": "69200",
+          "streetAddress": "Rue des Martyrs de la Résistance",
+          "addressCountry": "France",
+          "addressLocality": "VENISSIEUX"
+        },
+        "allowed_waste": [
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.15",
+      "geometry": { "type": "Point", "coordinates": [4.933219, 45.777548] },
+      "properties": {
+        "identifiant": 15,
+        "nom": "Vaulx-en-Velin",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69120",
+          "streetAddress": "15 Rue Pierre Mendès France",
+          "addressCountry": "France",
+          "addressLocality": "VAULX-EN-VELIN"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Gravats" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 25 closed \"Jour de Noël\"; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 25 closed \"Jour de Noël\""
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.4",
+      "geometry": { "type": "Point", "coordinates": [4.855227, 45.677327] },
+      "properties": {
+        "identifiant": 4,
+        "nom": "Feyzin",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69320",
+          "streetAddress": "26 Rue Léon Blum",
+          "addressCountry": "France",
+          "addressLocality": "FEYZIN"
+        },
+        "allowed_waste": [
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Métaux" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Bois" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.2",
+      "geometry": { "type": "Point", "coordinates": [4.773139, 45.802258] },
+      "properties": {
+        "identifiant": 2,
+        "nom": "Champagne-au-Mont-d'Or",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69410",
+          "streetAddress": "Impasse des Anciennes Vignes",
+          "addressCountry": "France",
+          "addressLocality": "CHAMPAGNE-AU-MONT-D'OR"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          },
+          { "schema:category": "Huiles vidange Moteur" }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.11",
+      "geometry": { "type": "Point", "coordinates": [4.829481, 45.696056] },
+      "properties": {
+        "identifiant": 11,
+        "nom": "Oullins-Pierre-Bénite",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69310",
+          "streetAddress": "Chemin de la Gravière",
+          "addressCountry": "France",
+          "addressLocality": "PIERRE-BENITE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Fenêtres" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.33",
+      "geometry": { "type": "Point", "coordinates": [4.826286, 45.758272] },
+      "properties": {
+        "identifiant": 33,
+        "nom": "Lyon 5",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69005",
+          "streetAddress": "Place Benoît Crepu",
+          "addressCountry": "FR",
+          "addressLocality": "Lyon 5 ème"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Métaux" }
+        ],
+        "horaires": "2026 Nov 13 Fr 14:00-20:00; 2026 Dec 11 Fr 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.29",
+      "geometry": { "type": "Point", "coordinates": [4.8685, 45.773839] },
+      "properties": {
+        "identifiant": 28,
+        "nom": "Villeurbanne - Wilson",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69100",
+          "streetAddress": "Place Wilson",
+          "addressCountry": "France",
+          "addressLocality": "VILLEURBANNE"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Platre" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Encombrants" }
+        ],
+        "horaires": "2026 Nov 14 Sa 10:00-16:00; 2026 Dec 12 Sa 10:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.19",
+      "geometry": { "type": "Point", "coordinates": [5.008202, 45.74472] },
+      "properties": {
+        "identifiant": 19,
+        "nom": "Genas",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69740",
+          "streetAddress": "Rue de l'Egalité",
+          "addressCountry": "France",
+          "addressLocality": "GENAS"
+        },
+        "allowed_waste": [
+          { "schema:category": "Fenêtres" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Papier" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.23",
+      "geometry": { "type": "Point", "coordinates": [4.865975, 45.769689] },
+      "properties": {
+        "identifiant": 32,
+        "nom": "Villeurbanne - Passementiers",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69100",
+          "streetAddress": "Place des Passementiers",
+          "addressCountry": "France",
+          "addressLocality": "VILLEURBANNE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Bois" },
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          }
+        ],
+        "horaires": "2026 Nov 27 Fr 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.24",
+      "geometry": { "type": "Point", "coordinates": [4.830384, 45.768901] },
+      "properties": {
+        "identifiant": 21,
+        "nom": "Lyon 1",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69001",
+          "streetAddress": "Place Sathonay",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 1 er"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Meubles" },
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          }
+        ],
+        "horaires": "2026 Nov 06 Fr 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.5",
+      "geometry": { "type": "Point", "coordinates": [4.771983, 45.728963] },
+      "properties": {
+        "identifiant": 5,
+        "nom": "Francheville - Sainte-Foy",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69340",
+          "streetAddress": "29 Route de la Gare",
+          "addressCountry": "France",
+          "addressLocality": "FRANCHEVILLE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          },
+          { "schema:category": "Fenêtres" }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.9",
+      "geometry": { "type": "Point", "coordinates": [4.932352, 45.672753] },
+      "properties": {
+        "identifiant": 9,
+        "nom": "Mions - Corbas",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69780",
+          "streetAddress": "Boulevard des Nations",
+          "addressCountry": "France",
+          "addressLocality": "MIONS"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Meubles" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.16",
+      "geometry": { "type": "Point", "coordinates": [4.868166, 45.689117] },
+      "properties": {
+        "identifiant": 16,
+        "nom": "Vénissieux",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69200",
+          "streetAddress": "Avenue Jean Moulin",
+          "addressCountry": "France",
+          "addressLocality": "VENISSIEUX"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.26",
+      "geometry": { "type": "Point", "coordinates": [4.835273, 45.779658] },
+      "properties": {
+        "identifiant": 23,
+        "nom": "Lyon 4",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69004",
+          "streetAddress": "Place du Commandant Arnaud",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 4 ème"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Meubles" },
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          }
+        ],
+        "horaires": "2026 Nov 18 We 14:00-20:00; 2026 Dec 16 We 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.12",
+      "geometry": { "type": "Point", "coordinates": [4.881931, 45.823336] },
+      "properties": {
+        "identifiant": 12,
+        "nom": "Rillieux-la-Pape",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69140",
+          "streetAddress": "Route de Fontaines",
+          "addressCountry": "France",
+          "addressLocality": "RILLIEUX-LA-PAPE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Fenêtres" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Lampes à décharger et à LED" },
+          { "schema:category": "Papier" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Pneus VL - 2 roues" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.6",
+      "geometry": { "type": "Point", "coordinates": [4.767547, 45.607863] },
+      "properties": {
+        "identifiant": 6,
+        "nom": "Grigny - Chantelot",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69520",
+          "streetAddress": "20 Avenue de Chantelot",
+          "addressCountry": "France",
+          "addressLocality": "GRIGNY"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Nov 28 Sa 14:00-17:00; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Nov 28 Su 14:00-17:00; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.25",
+      "geometry": { "type": "Point", "coordinates": [4.844806, 45.757981] },
+      "properties": {
+        "identifiant": 22,
+        "nom": "Lyon 3",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69003",
+          "streetAddress": "Place Bahadourian",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 3 ème"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Meubles" },
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          }
+        ],
+        "horaires": "2026 Nov 21 Sa 10:00-16:00; 2026 Dec 19 Sa 10:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.28",
+      "geometry": { "type": "Point", "coordinates": [4.871215, 45.744736] },
+      "properties": {
+        "identifiant": 26,
+        "nom": "Lyon 8 - Lumière",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69008",
+          "streetAddress": "Place Ambroise Courtois",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 8 ème"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Métaux" }
+        ],
+        "horaires": "2026 Nov 20 Fr 14:00-20:00; 2026 Dec 18 Fr 14:00-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.32",
+      "geometry": { "type": "Point", "coordinates": [4.879319, 45.813604] },
+      "properties": {
+        "identifiant": 34,
+        "nom": "Site Digitale Veolia",
+        "type_decheterie": "Temporaire",
+        "address": {
+          "postalCode": "69140",
+          "streetAddress": "105 Avenue du 8 Mai 1945",
+          "addressCountry": "France",
+          "addressLocality": "RILLIEUX-LA-PAPE"
+        },
+        "allowed_waste": [
+          { "schema:category": "Gravats" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Cartons" }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.27",
+      "geometry": { "type": "Point", "coordinates": [4.853032, 45.767362] },
+      "properties": {
+        "identifiant": 25,
+        "nom": "Lyon 6",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69006",
+          "streetAddress": "Place Elmaleh",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 6 ème"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Métaux" }
+        ],
+        "horaires": "2026 Oct 28 We 14:30-20:00; 2026 Nov 25 We 14:30-20:00; 2026 Dec 23 We 14:30-20:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.21",
+      "geometry": { "type": "Point", "coordinates": [4.841252, 45.749352] },
+      "properties": {
+        "identifiant": 30,
+        "nom": "Lyon 7 - Prado",
+        "type_decheterie": "Mobile",
+        "address": {
+          "postalCode": "69007",
+          "streetAddress": "Place du Prado",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 7 ème"
+        },
+        "allowed_waste": [
+          {
+            "schema:category": "Petits appareils électriques (Micro-ondes, téléphones portables, imprimantes, fers à repasser, unités centrales, etc)"
+          },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" }
+        ],
+        "horaires": "closed"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.8",
+      "geometry": { "type": "Point", "coordinates": [4.795462, 45.768283] },
+      "properties": {
+        "identifiant": 8,
+        "nom": "Lyon - Vaise",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69009",
+          "streetAddress": "82 Avenue Sidoine Apollinaire",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 9 ème"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Textiles" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Papier" },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.3",
+      "geometry": { "type": "Point", "coordinates": [4.938371, 45.756653] },
+      "properties": {
+        "identifiant": 3,
+        "nom": "Décines-Charpieu",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69150",
+          "streetAddress": "66 Rue Paul et Marc Barbezat",
+          "addressCountry": "France",
+          "addressLocality": "DECINES-CHARPIEU"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Gravats" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Meubles" },
+          { "schema:category": "Papier" },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Apr 01-2026 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2027 Apr 01-2027 Oct 31 Mo-Fr 08:30-12:00,13:30-18:00, Sa 08:30-18:30, Su 09:00-12:00 \"Horaires d’été\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 03 Tu 14:00-17:00; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gip_proprete.gipdecheterie_3_0_0.7",
+      "geometry": { "type": "Point", "coordinates": [4.842651, 45.73533] },
+      "properties": {
+        "identifiant": 7,
+        "nom": "Lyon - Artillerie",
+        "type_decheterie": "Classique",
+        "address": {
+          "postalCode": "69007",
+          "streetAddress": "12 Boulevard de l'Artillerie",
+          "addressCountry": "France",
+          "addressLocality": "Lyon 7 ème"
+        },
+        "allowed_waste": [
+          { "schema:category": "Métaux" },
+          { "schema:category": "Cartons" },
+          { "schema:category": "Textiles" },
+          { "schema:category": "Végétaux" },
+          { "schema:category": "Encombrants" },
+          { "schema:category": "Bois" },
+          { "schema:category": "Platre" },
+          { "schema:category": "DEEE (Télévisions, écrans, électroménager)" },
+          { "schema:category": "Lampes à décharger et à LED" },
+          {
+            "allowedWeight": { "schema:maxValue": 1, "schema:unitCode": "KGM" },
+            "schema:category": "Piles - accumulateurs"
+          },
+          { "schema:category": "Gravats" },
+          { "schema:category": "Papier" },
+          {
+            "allowedWeight": { "schema:maxValue": 8, "schema:unitCode": "KGM" },
+            "schema:category": "DDN (peintures, vernis, teintures, colles, solvants, ..)"
+          },
+          { "schema:category": "Huiles vidange Moteur" },
+          {
+            "allowedQuantity": { "schema:maxValue": 1 },
+            "schema:category": "Batteries automobile"
+          },
+          {
+            "allowedVolume": { "schema:maxValue": 3, "schema:unitCode": "LTR" },
+            "schema:category": "Huiles Friture"
+          }
+        ],
+        "horaires": "Mo-Fr 09:00-12:00,14:00-17:00, Sa 09:00-17:00, Su 09:00-12:00 \"Horaires d’hiver\"; 2026 Nov 01 closed \"Toussaint\"; 2026 Nov 11 closed \"11 novembre\"; 2026 Dec 24 Th 09:00-12:00,14:00-16:00; 2026 Dec 25 closed \"Jour de Noël\"; 2026 Dec 31 Th 09:00-12:00,14:00-16:00; 2027 Jan 01 closed \"1er janvier\"; 2027 Mar 29 closed \"Lundi de Pâques\"; 2027 May 01 closed \"1er mai\"; 2027 May 06 closed \"Ascension\"; 2027 May 08 closed \"8 mai\"; 2027 May 17 closed \"Lundi de Pentecôte\"; 2027 Jul 14 closed \"14 juillet\"; 2027 Aug 15 closed \"Assomption\"; 2027 Nov 01 closed \"Toussaint\"; 2027 Nov 11 closed \"11 novembre\"; 2027 Dec 24 Fr 09:00-12:00,14:00-16:00; 2027 Dec 25 closed \"Jour de Noël\"; 2027 Dec 31 Fr 09:00-12:00,14:00-16:00"
+      }
+    }
+  ],
+  "totalFeatures": 31,
+  "numberMatched": 31,
+  "numberReturned": 31,
+  "timeStamp": "2026-10-31T07:36:25.880Z",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4326" } },
+  "bbox": [4.74263149935973, 45.607863397140775, 5.0082019414358205, 45.88521755828084]
+}

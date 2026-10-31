@@ -8,14 +8,14 @@ El horario procede de los **datos abiertos** de las metrópolis. **Sin cuenta ni
 > sobre todo en un día festivo o tras un cambio de temporada.
 
 Integración no oficial, sin relación con las metrópolis ni con los gestores. Probada con las
-respuestas reales de las cuatro fuentes (30/10/2026), todavía no en una instancia real de Gladys:
-sus comentarios son bienvenidos.
+respuestas reales de las cinco fuentes (30/10/2026, Lyon el 31/10/2026), todavía no en una instancia
+real de Gladys: sus comentarios son bienvenidos.
 
 ## Lo que obtiene
 
 - Un **dispositivo por punto limpio** añadido: abierto ahora, horario de hoy, hora de cierre,
   próxima apertura.
-- En Burdeos, los **residuos aceptados** en texto, y cinco funciones sí/no: restos de poda,
+- En Burdeos y Lyon, los **residuos aceptados** en texto, y cinco funciones sí/no: restos de poda,
   escombros, madera, aparatos eléctricos, voluminosos.
 - Un **widget** «Puntos limpios»: sus puntos limpios en una línea cada uno, en verde cuando está
   abierto, en naranja la última media hora, en rojo cuando está cerrado.
@@ -43,10 +43,10 @@ sus comentarios son bienvenidos.
 
 - **Metrópolis**: se proponen todos los puntos limpios con horario de las metrópolis marcadas.
   Disponibles hoy: Estrasburgo (Eurométropole), Toulouse Métropole (Decoset), Bordeaux Métropole,
-  Tours Métropole Val de Loire.
+  Tours Métropole Val de Loire, Métropole de Lyon.
 - **Puntos limpios más cercanos**: propone también este número de puntos limpios más cercanos a la
   casa (3 por defecto, 0 para desactivar), dentro de la **distancia máxima** (30 km en línea recta
-  por defecto). Nada que marcar si vive en una de las cuatro metrópolis.
+  por defecto). Nada que marcar si vive en una de las cinco metrópolis.
 - **Cierre próximo (minutos)**: cuándo se dispara «Un punto limpio cierra pronto» (30 por defecto).
 - **Idioma de los nombres y mensajes**: francés por defecto. Los nombres de las funciones se fijan al
   añadir un dispositivo; los textos siguen el idioma de inmediato.
@@ -63,14 +63,14 @@ propuestos, la última lectura y los errores.
 
 ## Dispositivos
 
-| Función               | Tipo         | Valor                                                          |
-| --------------------- | ------------ | -------------------------------------------------------------- |
-| Abierto ahora         | binario      | 1 abierto, 0 cerrado; sin valor si el horario es ilegible      |
-| Horario de hoy        | texto        | «09:00–12:00, 14:00–18:00», «Cerrado hoy», «Festivo…»          |
-| Hora de cierre        | texto        | «18:00» mientras está abierto, «Cerrado» si no                 |
-| Próxima apertura      | texto        | «mañana a las 09:00», «el domingo a las 10:00»                 |
-| Residuos aceptados    | texto        | solo Burdeos: «restos de poda, escombros, madera…»             |
-| Acepta restos de poda | binario (×5) | solo Burdeos: poda, escombros, madera, eléctricos, voluminosos |
+| Función               | Tipo         | Valor                                                            |
+| --------------------- | ------------ | ---------------------------------------------------------------- |
+| Abierto ahora         | binario      | 1 abierto, 0 cerrado; sin valor si el horario es ilegible        |
+| Horario de hoy        | texto        | «09:00–12:00, 14:00–18:00», «Cerrado hoy», «Festivo…»            |
+| Hora de cierre        | texto        | «18:00» mientras está abierto, «Cerrado» si no                   |
+| Próxima apertura      | texto        | «mañana a las 09:00», «el domingo a las 10:00»                   |
+| Residuos aceptados    | texto        | Burdeos y Lyon: «restos de poda, escombros, madera…»             |
+| Acepta restos de poda | binario (×5) | Burdeos y Lyon: poda, escombros, madera, eléctricos, voluminosos |
 
 La integración calcula los valores cada minuto, sin ninguna petición.
 
@@ -107,12 +107,13 @@ mensaje o a un altavoz, o continúe solo si `open_count` vale 1.
 
 ## Datos y actualización
 
-| Metrópoli   | Fuente                                        | Con horario | Festivos         |
-| ----------- | --------------------------------------------- | ----------- | ---------------- |
-| Estrasburgo | data.strasbourg.eu, `lieux_decheteries`       | 6           | no indicado      |
-| Toulouse    | data.toulouse-metropole.fr, `dechetteries_tm` | 20          | no indicado      |
-| Burdeos     | datahub.bordeaux-metropole.fr, tiempo real    | 18          | cerrado (PH off) |
-| Tours       | data.tours-metropole.fr, puntos limpios       | 7           | cerrado (PH off) |
+| Metrópoli   | Fuente                                        | Con horario | Festivos          |
+| ----------- | --------------------------------------------- | ----------- | ----------------- |
+| Estrasburgo | data.strasbourg.eu, `lieux_decheteries`       | 6           | no indicado       |
+| Toulouse    | data.toulouse-metropole.fr, `dechetteries_tm` | 20          | no indicado       |
+| Burdeos     | datahub.bordeaux-metropole.fr, tiempo real    | 18          | cerrado (PH off)  |
+| Tours       | data.tours-metropole.fr, puntos limpios       | 7           | cerrado (PH off)  |
+| Lyon        | data.grandlyon.com, WFS `gipdecheterie_3_0_0` | 28          | cierres con fecha |
 
 - Cada metrópoli es una petición **una vez al día** (una hora después tras un fallo), solo para las
   metrópolis necesarias. Abierto o cerrado se calcula cada minuto a partir del horario guardado, en la
@@ -122,7 +123,11 @@ mensaje o a un altavoz, o continúe solo si `open_count` vale 1.
   de diciembre, y los demás festivos cerrado salvo si abre los domingos: los textos dicen «en
   principio».
 - Se aplican las excepciones con fecha que publica Tours (horario de verano, obras, Nochebuena).
-- Licencias: Licence Ouverte / Etalab 2.0 para las cuatro fuentes.
+- Lyon escribe sus temporadas como «2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa …, Su …»: las fechas valen
+  para todos los días de la regla, como lo entiende la Métropole. Se aplican sus cierres con fecha
+  (Todos los Santos, Navidad…); sus demás festivos siguen la suposición anterior. Grand Lyon ofrece
+  esta capa a todos: no se necesita cuenta de Grand Lyon.
+- Licencias: Licence Ouverte / Etalab 2.0 para las cinco fuentes.
 
 ## Solución de problemas
 
@@ -136,18 +141,21 @@ mensaje o a un altavoz, o continúe solo si `open_count` vale 1.
 
 ## Limitaciones
 
-- Solo cuatro metrópolis: las demás no publican horarios en datos abiertos (Rennes da el horario de 1
+- Solo cinco metrópolis: las demás no publican horarios en datos abiertos (Rennes da el horario de 1
   punto limpio de 24, Nantes solo los residuos, Angers un calendario que ya no se mantiene). Indíquenos
   otra fuente.
 - Los datos de Toulouse (Decoset) son de 2022.
 - Los puntos limpios móviles de Burdeos no publican horario: no se proponen.
-- Los residuos aceptados solo se conocen en Burdeos.
+- Los residuos aceptados solo se conocen en Burdeos y Lyon.
+- Los puntos limpios móviles de Lyon abren unos pocos días al mes, publicados con uno o dos meses de
+  antelación: una próxima apertura a más de 14 días aparece como desconocida.
 - Las condiciones de acceso (tarjeta, solo residentes, tamaño del vehículo) no se muestran:
   consúltelas con el gestor.
 - Desarrollada sin visitar los puntos limpios: sus comentarios son bienvenidos.
 
 ## Créditos
 
-Datos: Eurométropole de Strasbourg, Toulouse Métropole y Decoset, Bordeaux Métropole, Tours Métropole
-Val de Loire (Licence Ouverte). Reglas de festivos como date-holidays. Construida con el
+Datos: Eurométropole de Strasbourg, Toulouse Métropole y Decoset, Bordeaux Métropole, Tours
+Métropole Val de Loire, Métropole de Lyon (Licence Ouverte). Reglas de festivos como date-holidays.
+Construida con el
 [SDK de integración de Gladys](https://github.com/GladysAssistant/integration-sdk-js).

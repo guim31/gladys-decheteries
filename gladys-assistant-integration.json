@@ -24,6 +24,7 @@
     "Toulouse",
     "Bordeaux",
     "Tours",
+    "Lyon",
     "open data"
   ],
   "location": true,
@@ -96,6 +97,15 @@
             "fr": "Tours Métropole Val de Loire",
             "de": "Tours Métropole Val de Loire",
             "es": "Tours Métropole Val de Loire"
+          }
+        },
+        {
+          "value": "lyon",
+          "label": {
+            "en": "Métropole de Lyon",
+            "fr": "Métropole de Lyon",
+            "de": "Métropole de Lyon",
+            "es": "Lyon (Métropole de Lyon)"
           }
         }
       ]

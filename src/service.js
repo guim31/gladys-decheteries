@@ -6,7 +6,7 @@
 // Two paces:
 // - the sources are read once a day (one request each; the hours change a
 //   few times a year), an hour later after a failure. Only the sources
-//   needed: the areas ticked, the ones of the sites added, and all four when
+//   needed: the areas ticked, the ones of the sites added, and all of them when
 //   the nearest sites around the house are wanted;
 // - every minute, open or closed is computed from the hours kept, without
 //   any request: states, triggers, widget.

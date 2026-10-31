@@ -9,15 +9,15 @@ Schlüssel.**
 > Betreiber, vor allem an Feiertagen oder nach einem Saisonwechsel.
 
 Inoffizielle Integration, nicht mit den Metropolen oder den Betreibern verbunden. Getestet mit den
-echten Antworten der vier Quellen (30.10.2026), noch nicht auf einer echten Gladys-Instanz:
-Rückmeldungen sind willkommen.
+echten Antworten der fünf Quellen (30.10.2026, Lyon am 31.10.2026), noch nicht auf einer echten
+Gladys-Instanz: Rückmeldungen sind willkommen.
 
 ## Was du bekommst
 
 - Ein **Gerät pro hinzugefügtem Wertstoffhof**: jetzt geöffnet, heutige Öffnungszeiten, Schließzeit,
   nächste Öffnung.
-- In Bordeaux die **angenommenen Abfälle** als Text und fünf Ja/Nein-Funktionen: Grünschnitt,
-  Bauschutt, Holz, Elektrogeräte, Sperrmüll.
+- In Bordeaux und Lyon die **angenommenen Abfälle** als Text und fünf Ja/Nein-Funktionen:
+  Grünschnitt, Bauschutt, Holz, Elektrogeräte, Sperrmüll.
 - Ein **Widget** „Wertstoffhöfe“: deine Höfe in je einer Zeile, grün wenn geöffnet, orange in der
   letzten halben Stunde, rot wenn geschlossen.
 - Drei **Szenenauslöser**: ein Hof öffnet, schließt bald (standardmäßig in 30 Minuten), schließt.
@@ -43,10 +43,10 @@ Rückmeldungen sind willkommen.
 
 - **Metropolen**: alle Wertstoffhöfe mit Öffnungszeiten der angekreuzten Metropolen werden
   angeboten. Heute verfügbar: Straßburg (Eurométropole), Toulouse Métropole (Decoset), Bordeaux
-  Métropole, Tours Métropole Val de Loire.
+  Métropole, Tours Métropole Val de Loire, Métropole de Lyon.
 - **Nächste Wertstoffhöfe**: bietet zusätzlich so viele Höfe nahe dem Haus an (standardmäßig 3, 0
   zum Abschalten), innerhalb der **maximalen Entfernung** (standardmäßig 30 km Luftlinie). Nichts
-  anzukreuzen, wenn du in einer der vier Metropolen wohnst.
+  anzukreuzen, wenn du in einer der fünf Metropolen wohnst.
 - **Bald geschlossen (Minuten)**: wann „Ein Wertstoffhof schließt bald“ auslöst (standardmäßig 30).
 - **Sprache der Namen und Meldungen**: standardmäßig Französisch. Die Namen der Funktionen werden
   beim Hinzufügen eines Geräts festgelegt; die Texte folgen der Sprache sofort.
@@ -69,8 +69,8 @@ die angebotenen Höfe, die letzte Abfrage und die Fehler.
 | Heutige Öffnungszeiten | Text       | „09:00–12:00, 14:00–18:00“, „Heute geschlossen“, „Feiertag…“            |
 | Schließzeit            | Text       | „18:00“ solange geöffnet, sonst „Geschlossen“                           |
 | Nächste Öffnung        | Text       | „morgen um 09:00“, „Sonntag um 10:00“                                   |
-| Angenommene Abfälle    | Text       | nur Bordeaux: „Grünschnitt, Bauschutt, Holz…“                           |
-| Nimmt Grünschnitt an   | binär (×5) | nur Bordeaux: Grünschnitt, Bauschutt, Holz, Elektro, Sperrmüll          |
+| Angenommene Abfälle    | Text       | Bordeaux und Lyon: „Grünschnitt, Bauschutt, Holz…“                      |
+| Nimmt Grünschnitt an   | binär (×5) | Bordeaux und Lyon: Grünschnitt, Bauschutt, Holz, Elektro, Sperrmüll     |
 
 Die Werte berechnet die Integration jede Minute, ohne eine einzige Anfrage.
 
@@ -112,6 +112,7 @@ Nachricht oder an einen Lautsprecher, oder fahre nur fort, wenn `open_count` 1 i
 | Toulouse  | data.toulouse-metropole.fr, `dechetteries_tm` | 20         | nicht angegeben      |
 | Bordeaux  | datahub.bordeaux-metropole.fr, Echtzeit       | 18         | geschlossen (PH off) |
 | Tours     | data.tours-metropole.fr, Wertstoffhöfe        | 7          | geschlossen (PH off) |
+| Lyon      | data.grandlyon.com, WFS `gipdecheterie_3_0_0` | 28         | datierte Schließtage |
 
 - Jede Metropole ist **einmal am Tag** eine Anfrage (nach einem Fehler eine Stunde später), nur für
   die benötigten Metropolen. Geöffnet oder geschlossen wird jede Minute aus den gespeicherten Zeiten
@@ -121,7 +122,11 @@ Nachricht oder an einen Lautsprecher, oder fahre nur fort, wenn `open_count` 1 i
   geschlossen**, an den anderen Feiertagen als geschlossen, außer er öffnet sonntags: die Texte sagen
   „vermutlich“.
 - Die datierten Ausnahmen von Tours (Sommerzeiten, Bauarbeiten, Heiligabend) werden angewandt.
-- Lizenzen: Licence Ouverte / Etalab 2.0 für alle vier Quellen.
+- Lyon schreibt seine Saisons als „2026 Apr 01-2026 Oct 31 Mo-Fr …, Sa …, Su …“: die Daten gelten
+  für alle Tage der Regel, wie die Métropole es meint. Die datierten Schließtage von Lyon
+  (Allerheiligen, Weihnachten…) werden angewandt; die anderen Feiertage folgen der Annahme oben. Grand
+  Lyon stellt diese Ebene allen bereit: kein Grand-Lyon-Konto nötig.
+- Lizenzen: Licence Ouverte / Etalab 2.0 für alle fünf Quellen.
 
 ## Fehlerbehebung
 
@@ -135,12 +140,14 @@ Nachricht oder an einen Lautsprecher, oder fahre nur fort, wenn `open_count` 1 i
 
 ## Einschränkungen
 
-- Nur vier Metropolen: die anderen veröffentlichen keine Zeiten als offene Daten (Rennes für 1 von 24
-  Höfen, Nantes nur die Abfälle, Angers einen nicht mehr gepflegten Kalender). Nenn uns eine andere
-  Quelle.
+- Nur fünf Metropolen: die anderen veröffentlichen keine Zeiten als offene Daten (Rennes für 1 von
+  24 Höfen, Nantes nur die Abfälle, Angers einen nicht mehr gepflegten Kalender). Nenn uns eine
+  andere Quelle.
 - Die Daten von Toulouse (Decoset) stammen von 2022.
 - Die mobilen Wertstoffhöfe von Bordeaux veröffentlichen keine Zeiten: sie werden nicht angeboten.
-- Die angenommenen Abfälle sind nur in Bordeaux bekannt.
+- Die angenommenen Abfälle sind nur in Bordeaux und Lyon bekannt.
+- Die mobilen Wertstoffhöfe von Lyon öffnen an wenigen Tagen im Monat, ein oder zwei Monate im
+  Voraus veröffentlicht: eine nächste Öffnung in mehr als 14 Tagen erscheint als unbekannt.
 - Zugangsbedingungen (Karte, nur Einwohner, Fahrzeuggröße) werden nicht angezeigt: frag den
   Betreiber.
 - Entwickelt, ohne die Höfe zu besuchen: Rückmeldungen sind willkommen.
@@ -148,5 +155,5 @@ Nachricht oder an einen Lautsprecher, oder fahre nur fort, wenn `open_count` 1 i
 ## Danksagung
 
 Daten: Eurométropole de Strasbourg, Toulouse Métropole und Decoset, Bordeaux Métropole, Tours
-Métropole Val de Loire (Licence Ouverte). Feiertagsregeln wie date-holidays. Gebaut mit dem
-[Gladys-Integrations-SDK](https://github.com/GladysAssistant/integration-sdk-js).
+Métropole Val de Loire, Métropole de Lyon (Licence Ouverte). Feiertagsregeln wie date-holidays.
+Gebaut mit dem [Gladys-Integrations-SDK](https://github.com/GladysAssistant/integration-sdk-js).
