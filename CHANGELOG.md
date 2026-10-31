@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-31
+
 ### Added
 
 - Métropole de Lyon: its 28 recycling centres with hours (fixed and mobile
@@ -38,5 +40,6 @@ the notes of the version's GitHub Release.
 - Dashboard widget: one row per site, open until when or next opening.
 - Texts and documentation in English, French, German and Spanish.
 
-[Unreleased]: https://github.com/guim31/gladys-decheteries/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/guim31/gladys-decheteries/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/guim31/gladys-decheteries/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/guim31/gladys-decheteries/releases/tag/v1.0.0
