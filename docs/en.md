@@ -78,6 +78,15 @@ Add the **Recycling centres** widget to a dashboard: one row per site (10 at mos
 Gladys and "open until 18:00", "closes in 15 min" or "closed · opens Sun 10:00". Settings: the sites
 shown (empty: all of them), and **Show the times** to keep only "open" or "closed".
 
+**Days shown** (today only by default) adds the next days under each site, up to a week: "Sat 31" /
+"09:00–12:00, 14:00–18:00", the same consecutive days on one row ("Tue 3 – Thu 5"), green when open,
+red when closed. A public holiday is named on its row, with "assumed" when the source says nothing
+about it. Past the last date a source has published (the mobile centres of Lyon, a season with no
+next one yet), the row says "hours not published yet": nothing is made up. The widget holds 10 rows:
+a site is shown whole or not at all, and a line at the bottom says how many were left out. With 7
+days, that is often only one or two sites: pick them in the first setting, or use one widget per
+site.
+
 ## Scene triggers
 
 - **Recycling centre opens**: variables `site_name`, `closes_at`.

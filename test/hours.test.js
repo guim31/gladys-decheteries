@@ -7,7 +7,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { PARIS } from '../src/clock.js';
-import { dayOf, parseOpeningHours, parsePeriods, statusAt } from '../src/hours.js';
+import { dayOf, daysAfter, parseOpeningHours, parsePeriods, statusAt } from '../src/hours.js';
 import { fixtureJson, paris } from './helpers/world.js';
 
 const record = (source, predicate) => fixtureJson(`${source}.json`).results.find(predicate);
@@ -220,4 +220,47 @@ test('Grand Lyon writing: only with the option, and parts over the same days are
   ]) {
     assert.equal(parseOpeningHours(overlapping, { shareDate: true }), null, overlapping);
   }
+});
+
+test('until: the last published day of fully dated hours, none for recurring ones', () => {
+  assert.equal(parseOpeningHours('Mo-Fr 09:00-12:00; PH off').until, null);
+  assert.equal(parseOpeningHours('Apr-Sep Mo-Fr 09:00-12:00').until, null);
+  assert.equal(parseOpeningHours('2026 Apr-Sep Mo 09:00-12:00').until, '2026-09-31');
+  // A dated closure says nothing about the days after it.
+  assert.equal(parseOpeningHours('Mo-Fr 09:00-12:00; 2026 Dec 25 off').until, null);
+  assert.equal(lyon('Lyon 1').until, '2026-11-06');
+  assert.equal(lyon('Lyon 5').until, '2026-12-11');
+  assert.equal(strasbourg('Wantzenau').until, null);
+  assert.equal(
+    parsePeriods([
+      {
+        startDate: '2026-11-01',
+        endDate: '2026-11-30',
+        schedules: [{ dayOfWeek: 0, startHour: '09:00', endHour: '12:00' }],
+      },
+    ]).until,
+    '2026-11-30',
+  );
+});
+
+test('daysAfter: the next days, unknown past the last published one, never guessed', () => {
+  const lyon1 = lyon('Lyon 1');
+  const days = daysAfter(lyon1, '2026-11-04', 4, '69');
+  assert.deepEqual(
+    days.map(({ date, known, slots }) => [date, known, slots.length]),
+    [
+      ['2026-11-05', true, 0],
+      ['2026-11-06', true, 1],
+      ['2026-11-07', false, 0],
+      ['2026-11-08', false, 0],
+    ],
+  );
+  assert.deepEqual(
+    daysAfter(null, '2026-11-04', 2, '69').map((day) => day.known),
+    [false, false],
+  );
+  // Toussaint on a Sunday at Blagnac, open on Sundays: assumed open.
+  const [, sunday] = daysAfter(toulouse('BLAGNAC'), '2026-10-30', 2, '31');
+  assert.deepEqual([sunday.date, sunday.holiday, sunday.assumed], ['2026-11-01', true, true]);
+  assert.ok(sunday.slots.length > 0);
 });

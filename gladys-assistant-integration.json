@@ -544,6 +544,62 @@
             "de": "Uhrzeiten anzeigen",
             "es": "Mostrar las horas"
           }
+        },
+        {
+          "key": "days",
+          "type": "select",
+          "default": "1",
+          "required": false,
+          "label": {
+            "en": "Days shown",
+            "fr": "Jours affichés",
+            "de": "Angezeigte Tage",
+            "es": "Días mostrados"
+          },
+          "description": {
+            "en": "Today, then the hours of the next days under each recycling centre.",
+            "fr": "Aujourd'hui, puis les horaires des jours suivants sous chaque déchèterie.",
+            "de": "Heute, dann die Zeiten der nächsten Tage unter jedem Wertstoffhof.",
+            "es": "Hoy y, debajo de cada punto limpio, el horario de los días siguientes."
+          },
+          "options": [
+            {
+              "value": "1",
+              "label": {
+                "en": "Today only",
+                "fr": "Aujourd'hui seulement",
+                "de": "Nur heute",
+                "es": "Solo hoy"
+              }
+            },
+            {
+              "value": "2",
+              "label": {
+                "en": "2 days",
+                "fr": "2 jours",
+                "de": "2 Tage",
+                "es": "2 días"
+              }
+            },
+            {
+              "value": "3",
+              "label": {
+                "en": "3 days",
+                "fr": "3 jours",
+                "de": "3 Tage",
+                "es": "3 días"
+              }
+            },
+            {
+              "value": "7",
+              "label": {
+                "en": "7 days",
+                "fr": "7 jours",
+                "de": "7 Tage",
+                "es": "7 días"
+              }
+            }
+          ]
         }
       ]
     }

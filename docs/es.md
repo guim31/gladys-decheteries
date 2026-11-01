@@ -81,6 +81,16 @@ nombre en Gladys y «abierto hasta las 18:00», «cierra en 15 min» o «cerrado
 Ajustes: los puntos limpios mostrados (vacío: todos) y **Mostrar las horas** para dejar solo
 «abierto» o «cerrado».
 
+**Días mostrados** (solo hoy por defecto) añade los días siguientes debajo de cada punto limpio,
+hasta una semana: «sáb. 31» / «09:00–12:00, 14:00–18:00», los días consecutivos iguales en una sola
+línea («mar. 3 – jue. 5»), en verde cuando está abierto y en rojo cuando está cerrado. Un festivo se
+indica en su línea, con «en principio» cuando la fuente no dice nada. Más allá de la última fecha
+publicada por la fuente (puntos limpios móviles de Lyon, una temporada cuya siguiente aún no se ha
+publicado), la línea indica «horario aún no publicado»: no se inventa nada. El widget tiene 10
+líneas: un punto limpio se muestra entero o no se muestra, y una línea al final indica cuántos se
+han dejado fuera. Con 7 días, a menudo solo caben uno o dos: elíjalos en el primer ajuste, o use un
+widget por punto limpio.
+
 ## Disparadores de escena
 
 - **Un punto limpio abre**: variables `site_name`, `closes_at`.

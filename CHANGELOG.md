@@ -10,6 +10,14 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+### Added
+
+- Widget: a **Days shown** setting (today only by default, as before) shows
+  the hours of the next 2, 3 or 7 days under each recycling centre, the same
+  consecutive days on one row. Public holidays are named, and a day past the
+  last date a source has published says so instead of "closed". The widget
+  keeps 10 rows: a caption says how many centres were left out.
+
 ## [1.1.0] - 2026-10-31
 
 ### Added

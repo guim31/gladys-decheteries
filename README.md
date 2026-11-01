@@ -20,7 +20,8 @@ User documentation: [English](docs/en.md) · [français](docs/fr.md) ·
   next opening; in Bordeaux, the accepted waste (text, and green waste, rubble,
   wood, electrical appliances, bulky waste as yes/no features).
 - The sites of the areas you tick, or the nearest ones to the house.
-- A dashboard widget: one row per site, open until when or next opening.
+- A dashboard widget: one row per site, open until when or next opening, and
+  optionally the hours of the next days (up to a week).
 - Scene triggers: a site opens, closes soon (30 minutes by default), closes.
 - A scene action, "Is the recycling centre open?": your sites in a sentence.
 

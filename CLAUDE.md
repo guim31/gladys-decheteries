@@ -207,6 +207,8 @@ code de ce dépôt. Compléter ce fichier quand un nouveau piège est découvert
   résolution des références ; un contenu amputé reste en cache jusqu'au TTL. Appeler
   `requestWidgetRefresh` à la création d'un appareil. `validateWidgetContent` est exporté pour les
   tests, mais ne vérifie pas que les `external_id` liés existent : les croiser avec `buildDevice`.
+  Il renvoie **une liste de chaînes** (erreurs et avertissements mêlés), pas `{ errors }` : un test
+  écrit `validateWidgetContent(c).errors ?? []` ne vérifie rien (corrigé ici le 01/11/2026).
 - Une ligne de `status` exige un `value` (nombre ou texte ≤ 40).
 - Le cœur **jette un bouton dont la clé d'action est déjà prise** : clés numérotées.
 - Le vocabulaire des widgets n'a ni liste ni curseur, **par choix** du cœur. Seul un bouton
@@ -307,6 +309,12 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
   5 min ni après un changement des horaires publiés (`signature`).
 - **Réponses vides** : une réponse sans `results`, vide ou tronquée (`total_count` > 100, une seule page lue)
   est un échec : on garde la dernière bonne lecture et on réessaie une heure plus tard.
+- **Widget sur plusieurs jours** (réglage `days`, 1.2.0, demande de prohand, t/11455/3) : les jours suivants
+  partagent l'unique `status` (10 lignes) avec les déchèteries, jours consécutifs identiques regroupés ; une
+  déchèterie entière ou rien, et une légende compte celles laissées de côté. `schedule.until` (posé par
+  `finish`) est le dernier jour publié quand **toutes** les règles qui ouvrent sont datées avec une année
+  (mobiles et saisons de Lyon, périodes bornées de Strasbourg) : au-delà, « pas encore publiés », jamais
+  « fermé ». Une règle récurrente (`Apr-Sep`) ou sans date le laisse à `null`.
 - **Strasbourg** : `exceptionalschedule` est du HTML libre (vu sur les piscines), jamais lu ; une période
   datée sans créneau vaut fermeture. Un créneau finissant à 24:00 n'est pas relié au lendemain (aucune
   source n'en publie).
