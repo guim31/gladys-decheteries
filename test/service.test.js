@@ -349,7 +349,7 @@ test('the widget over several days: the next days under each site, grouped, neve
   assert.deepEqual(crowded.components[1], {
     type: 'text',
     variant: 'caption',
-    text: 'Nicht angezeigte Wertstoffhöfe: 1. Zeige weniger Tage an.',
+    text: 'Nicht angezeigte Wertstoffhöfe (1): Zeige weniger Tage an.',
   });
 });
 

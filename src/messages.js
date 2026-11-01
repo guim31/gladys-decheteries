@@ -249,7 +249,7 @@ export const TEXT = {
     gone: 'This recycling centre is no longer watched.',
     dayLabel: ({ day, number }) => `${day} ${number}`,
     notPublished: 'hours not published yet',
-    hiddenSites: ({ count }) => `Recycling centres not shown: ${count}. Show fewer days.`,
+    hiddenSites: ({ count }) => `Recycling centres not shown (${count}): show fewer days.`,
     noSite: 'No recycling centre is watched: add one in the Discover tab of the integration.',
   },
   fr: {
@@ -285,7 +285,7 @@ export const TEXT = {
     gone: "Cette déchèterie n'est plus suivie.",
     dayLabel: ({ day, number }) => `${day} ${number}`,
     notPublished: 'horaires pas encore publiés',
-    hiddenSites: ({ count }) => `Déchèteries non affichées : ${count}. Affichez moins de jours.`,
+    hiddenSites: ({ count }) => `Déchèteries non affichées (${count}) : affichez moins de jours.`,
     noSite:
       "Aucune déchèterie n'est suivie : ajoutez-en une dans l'onglet Découverte de l'intégration.",
   },
@@ -322,7 +322,7 @@ export const TEXT = {
     gone: 'Dieser Wertstoffhof wird nicht mehr verfolgt.',
     dayLabel: ({ day, number }) => `${day} ${number}.`,
     notPublished: 'Zeiten noch nicht veröffentlicht',
-    hiddenSites: ({ count }) => `Nicht angezeigte Wertstoffhöfe: ${count}. Zeige weniger Tage an.`,
+    hiddenSites: ({ count }) => `Nicht angezeigte Wertstoffhöfe (${count}): Zeige weniger Tage an.`,
     noSite: 'Kein Wertstoffhof wird verfolgt: füge einen im Tab „Entdecken“ der Integration hinzu.',
   },
   es: {
@@ -358,7 +358,7 @@ export const TEXT = {
     gone: 'Este punto limpio ya no se sigue.',
     dayLabel: ({ day, number }) => `${day} ${number}`,
     notPublished: 'horario aún no publicado',
-    hiddenSites: ({ count }) => `Puntos limpios no mostrados: ${count}. Muestre menos días.`,
+    hiddenSites: ({ count }) => `Puntos limpios no mostrados (${count}): muestre menos días.`,
     noSite: 'No se sigue ningún punto limpio: añada uno en la pestaña Descubrir de la integración.',
   },
 };

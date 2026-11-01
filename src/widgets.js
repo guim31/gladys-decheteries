@@ -135,8 +135,9 @@ async function sitesContent(service, { settings, language }) {
       },
       ...dayRows(service, site, days, language, hours),
     ];
-    // A site is shown whole or not at all, never cut in the middle of its days.
-    if (rows.length + group.length > MAX_ROWS) {
+    // A site is shown whole or not at all, never cut in the middle of its days,
+    // and the ones after it stay hidden too, to keep the order chosen.
+    if (hidden > 0 || rows.length + group.length > MAX_ROWS) {
       hidden += 1;
     } else {
       rows.push(...group);
