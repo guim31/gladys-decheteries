@@ -11,7 +11,7 @@ import { DEFAULT_CONFIG, LANGUAGES } from '../src/config.js';
 import { SCENE_ACTIONS } from '../src/scenes.js';
 import { TRIGGERS } from '../src/service.js';
 import { SOURCE_IDS } from '../src/sources.js';
-import { WIDGETS } from '../src/widgets.js';
+import { DAY_CHOICES, WIDGETS } from '../src/widgets.js';
 import { create, createWorld } from './helpers/world.js';
 
 const manifest = JSON.parse(
@@ -189,4 +189,16 @@ test('the catalog description holds 10 to 100 characters per language', () => {
   for (const [lang, text] of Object.entries(manifest.description)) {
     assert.ok(text.length >= 10 && text.length <= 100, `description.${lang}: ${text.length}`);
   }
+});
+
+test('the days setting of the widget: the choices of the code, today only by default', () => {
+  const days = field(manifest.widgets[0].settings, 'days');
+  assert.equal(days.type, 'select');
+  assert.equal(days.default, '1');
+  assert.deepEqual(optionValues(days), DAY_CHOICES.map(String));
+  // The settings published in 1.0.0 are still there.
+  assert.deepEqual(
+    manifest.widgets[0].settings.map((setting) => setting.key),
+    ['sites', 'show_hours', 'days'],
+  );
 });

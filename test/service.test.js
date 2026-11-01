@@ -27,6 +27,8 @@ const lastState = (world, device, key) => {
   return found ? (found.text ?? found.state) : undefined;
 };
 const fired = (world) => world.fake.sceneEvents.map((event) => event.key);
+const featureDevice = (world, suffix) =>
+  world.fake.discoveredDevices.find((device) => device.name.endsWith(suffix)).external_id;
 const names = (world) => world.fake.discoveredDevices.map((device) => device.name);
 
 test('the sites with hours of the areas ticked are offered, with stable ids', async (t) => {
@@ -274,7 +276,7 @@ test('the widget: one row per site, colors, hidden times, validated content', as
   await create(world, 'Ramier');
   await at(world, paris('2026-10-30 11:45'));
   const content = (await world.fake.widgetGet('sites', { language: 'fr' })).data.content;
-  assert.deepEqual(validateWidgetContent(content).errors ?? [], []);
+  assert.deepEqual(validateWidgetContent(content), []);
   assert.deepEqual(content.components[0].items, [
     { label: 'Déchèterie de Blagnac', value: 'ferme dans 15 min', color: 'warning' },
     { label: 'Déchèterie du Ramier', value: 'ferme dans 15 min', color: 'warning' },
@@ -290,6 +292,65 @@ test('the widget: one row per site, colors, hidden times, validated content', as
     settings: { show_hours: false },
   });
   assert.equal(hidden.data.content.components[0].items[1].value, 'closed');
+});
+
+test('the widget over several days: the next days under each site, grouped, never guessed', async (t) => {
+  const world = await createWorld({ config: { areas: ['toulouse', 'lyon'], nearest_count: 0 } });
+  t.after(() => world.app.stop());
+  await create(world, 'Blagnac');
+  await create(world, 'Ramier');
+  await at(world, paris('2026-10-30 11:45'));
+  const get = async (settings, language = 'fr') =>
+    (await world.fake.widgetGet('sites', { language, settings })).data.content;
+  // Today only, the default: the rows of 1.1.0, unchanged.
+  const today = await get({});
+  assert.deepEqual(await get({ days: '1' }), today);
+  assert.deepEqual(await get({ days: '5' }), today);
+  assert.equal(today.components[0].items.length, 2);
+  const three = await get({ days: '3' });
+  assert.deepEqual(validateWidgetContent(three), []);
+  assert.deepEqual(three.components[0].items, [
+    { label: 'Déchèterie de Blagnac', value: 'ferme dans 15 min', color: 'warning' },
+    { label: 'sam. 31', value: 'fermé', color: 'danger' },
+    // Toussaint: Blagnac opens on Sundays, so assumed open, and said so.
+    { label: 'dim. 1 · jour férié, ouvert a priori', value: '10:00–13:00', color: 'success' },
+    { label: 'Déchèterie du Ramier', value: 'ferme dans 15 min', color: 'warning' },
+    { label: 'sam. 31', value: '09:00–12:00, 14:00–18:00', color: 'success' },
+    { label: 'dim. 1', value: 'fermé', color: 'danger' },
+  ]);
+  // A week: the same consecutive days on one row, both sites within 10 rows.
+  const week = await get({ days: '7' });
+  assert.equal(week.components.length, 1);
+  assert.deepEqual(
+    week.components[0].items.slice(6).map(({ label, value }) => `${label} = ${value}`),
+    [
+      'Déchèterie du Ramier = ferme dans 15 min',
+      'sam. 31 = 09:00–12:00, 14:00–18:00',
+      'dim. 1 – lun. 2 = fermé',
+      'mar. 3 – jeu. 5 = 09:00–12:00, 14:00–18:00',
+    ],
+  );
+  const hidden = await get({ days: '3', show_hours: false }, 'en');
+  assert.equal(hidden.components[0].items[4].value, 'open');
+
+  // A mobile centre of Lyon past its last published date: unknown, grey.
+  await create(world, 'Déchèterie mobile Lyon 1');
+  await at(world, paris('2026-11-04 10:00'));
+  const mobile = await get({ days: '7', sites: [featureDevice(world, 'Lyon 1')] });
+  assert.deepEqual(mobile.components[0].items.slice(1), [
+    { label: 'jeu. 5', value: 'fermé', color: 'danger' },
+    { label: 'ven. 6', value: '14:00–20:00', color: 'success' },
+    { label: 'sam. 7 – mar. 10', value: 'horaires pas encore publiés', color: 'neutral' },
+  ]);
+  // Three sites over a week no longer fit 10 rows: the last one is left out, and said.
+  const crowded = await get({ days: '7' }, 'de');
+  assert.deepEqual(validateWidgetContent(crowded), []);
+  assert.ok(crowded.components[0].items.length <= 10);
+  assert.deepEqual(crowded.components[1], {
+    type: 'text',
+    variant: 'caption',
+    text: 'Nicht angezeigte Wertstoffhöfe: 1. Zeige weniger Tage an.',
+  });
 });
 
 test('a source down keeps the sites of the last read, and is read again an hour later', async (t) => {

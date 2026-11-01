@@ -84,6 +84,16 @@ son nom dans Gladys et « ouvert jusqu'à 18:00 », « ferme dans 15 min » ou �
 10:00 ». Réglages : les déchèteries affichées (vide : toutes), et **Afficher les heures** pour ne
 garder que « ouvert » ou « fermé ».
 
+**Jours affichés** (aujourd'hui seulement par défaut) ajoute les jours suivants sous chaque
+déchèterie, jusqu'à une semaine : « sam. 31 » / « 09:00–12:00, 14:00–18:00 », les jours consécutifs
+identiques sur une seule ligne (« mar. 3 – jeu. 5 »), en vert quand c'est ouvert, en rouge quand
+c'est fermé. Un jour férié est signalé sur sa ligne, avec « a priori » quand la source n'en dit rien.
+Au-delà de la dernière date publiée par la source (déchèteries mobiles de Lyon, saison dont la
+suivante n'est pas encore publiée), la ligne dit « horaires pas encore publiés » : rien n'est
+inventé. Le widget tient en 10 lignes : une déchèterie s'affiche en entier ou pas du tout, et une
+ligne en bas indique combien ont été laissées de côté. Sur 7 jours, cela fait souvent une ou deux
+déchèteries seulement : choisissez-les dans le premier réglage, ou mettez un widget par déchèterie.
+
 ## Déclencheurs de scène
 
 - **Une déchèterie ouvre** : variables `site_name`, `closes_at`.

@@ -81,6 +81,15 @@ seinem Namen in Gladys und „geöffnet bis 18:00“, „schließt in 15 Min.“
 So. 10:00“. Einstellungen: die angezeigten Höfe (leer: alle) und **Uhrzeiten anzeigen**, um nur
 „geöffnet“ oder „geschlossen“ zu behalten.
 
+**Angezeigte Tage** (standardmäßig nur heute) fügt unter jedem Hof die nächsten Tage hinzu, bis zu
+einer Woche: „Sa. 31.“ / „09:00–12:00, 14:00–18:00“, gleiche aufeinanderfolgende Tage in einer Zeile
+(„Di. 3. – Do. 5.“), grün wenn geöffnet, rot wenn geschlossen. Ein Feiertag steht in seiner Zeile,
+mit „vermutlich“, wenn die Quelle nichts dazu sagt. Nach dem letzten von der Quelle veröffentlichten
+Datum (mobile Höfe in Lyon, eine Saison ohne veröffentlichte Folgesaison) steht dort „Zeiten noch
+nicht veröffentlicht“: Es wird nichts erfunden. Das Widget fasst 10 Zeilen: Ein Hof wird ganz oder
+gar nicht angezeigt, und eine Zeile unten sagt, wie viele weggelassen wurden. Bei 7 Tagen sind das
+oft nur ein oder zwei Höfe: Wähle sie in der ersten Einstellung aus oder nutze ein Widget pro Hof.
+
 ## Szenenauslöser
 
 - **Ein Wertstoffhof öffnet**: Variablen `site_name`, `closes_at`.

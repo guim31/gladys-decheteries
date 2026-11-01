@@ -124,6 +124,7 @@ const SAMPLE = {
   time: '18:00',
   minutes: 30,
   day: 'mercredi',
+  number: 30,
   date: '10 nov.',
   when: 'mercredi à 08:30',
   short: 'mer. 08:30',
@@ -167,7 +168,18 @@ test('every message table of the code has the four languages', () => {
 });
 
 test('the widget row texts fit a status row (40 characters)', () => {
-  const keys = ['open', 'closed', 'noHours', 'openUntil', 'closesIn', 'opensAt', 'holidayRow'];
+  const keys = [
+    'open',
+    'closed',
+    'noHours',
+    'openUntil',
+    'closesIn',
+    'opensAt',
+    'holidayRow',
+    'notPublished',
+    'holidayClosed',
+    'holidayAssumed',
+  ];
   for (const lang of LANGS) {
     for (const key of keys) {
       const entry = TEXT[lang][key];

@@ -102,6 +102,10 @@ function parseWeekdays(text) {
 const month = (name) => MONTHS.indexOf(name) + 1;
 const MONTH = MONTHS.join('|');
 
+// The last day a date test can match, when it has one: a year-bound selector,
+// a dated period. A recurring one ("Apr-Sep") has none.
+const until = (test, last) => Object.assign(test, { until: last });
+
 /**
  * The date part of a rule, as a test of a 'YYYY-MM-DD' day, or null when it
  * is not one of the forms used by the sources.
@@ -116,12 +120,15 @@ export function parseDateSelector(text) {
     if (year && from > to) {
       return null;
     }
-    return (date) => {
-      const current = Number(date.slice(5, 7));
-      const inside =
-        from <= to ? current >= from && current <= to : current >= from || current <= to;
-      return inside && (!year || date.startsWith(year));
-    };
+    return until(
+      (date) => {
+        const current = Number(date.slice(5, 7));
+        const inside =
+          from <= to ? current >= from && current <= to : current >= from || current <= to;
+        return inside && (!year || date.startsWith(year));
+      },
+      year ? `${year}-${pad(to)}-31` : null,
+    );
   }
   match = new RegExp(
     `^(?:(\\d{4}) )?(${MONTH})(?: (\\d{1,2}(?:-\\d{1,2})?(?:,\\d{1,2}(?:-\\d{1,2})?)*))?$`,
@@ -137,12 +144,15 @@ export function parseDateSelector(text) {
     if (ranges.some(([first, last]) => first < 1 || last > 31 || first > last)) {
       return null;
     }
-    return (date) =>
-      (!year || date.startsWith(year)) &&
-      date.slice(4, 8) === prefix &&
-      ranges.some(
-        ([first, last]) => Number(date.slice(8)) >= first && Number(date.slice(8)) <= last,
-      );
+    return until(
+      (date) =>
+        (!year || date.startsWith(year)) &&
+        date.slice(4, 8) === prefix &&
+        ranges.some(
+          ([first, last]) => Number(date.slice(8)) >= first && Number(date.slice(8)) <= last,
+        ),
+      year ? `${year}${prefix}${pad(Math.max(...ranges.map(([, last]) => last)))}` : null,
+    );
   }
   match = new RegExp(
     `^(?:(\\d{4}) )?(${MONTH}) (\\d{1,2})-(?:(\\d{4}) )?(${MONTH}) (\\d{1,2})$`,
@@ -158,7 +168,7 @@ export function parseDateSelector(text) {
       const endYear = toYear ?? String(Number(fromYear) + (wraps ? 1 : 0));
       const start = `${startYear}-${from}`;
       const end = `${endYear}-${to}`;
-      return end >= start ? (date) => date >= start && date <= end : null;
+      return end >= start ? until((date) => date >= start && date <= end, end) : null;
     }
     return (date) => {
       const day = date.slice(5);
@@ -265,12 +275,23 @@ export function parseOpeningHours(text, { shareDate = false } = {}) {
   return finish(rules);
 }
 
-/** A rule list with its flags, or null when no rule ever opens. */
+/**
+ * A rule list with its flags, or null when no rule ever opens. `until` is the
+ * last day the source has published hours for, when every opening rule is
+ * dated (the mobile centres and the seasons of Lyon); null when the hours
+ * recur with no end. Past it, a day without hours is unknown, not closed.
+ */
 function finish(rules) {
-  if (!rules.some((rule) => rule.slots.length > 0)) {
+  const opening = rules.filter((rule) => rule.slots.length > 0);
+  if (opening.length === 0) {
     return null;
   }
-  return { rules, phExplicit: rules.some((rule) => rule.ph) };
+  const ends = opening.map((rule) => rule.date?.until ?? null);
+  return {
+    rules,
+    phExplicit: rules.some((rule) => rule.ph),
+    until: ends.includes(null) ? null : ends.sort().at(-1),
+  };
 }
 
 /** A JSON text or an already parsed value; [] for anything else. */
@@ -301,7 +322,8 @@ export function parsePeriods(periods) {
   for (const period of [...list.filter((p) => !dated(p)), ...list.filter(dated)]) {
     const start = isoDate(period?.startDate);
     const end = isoDate(period?.endDate);
-    const date = start || end ? (day) => (!start || day >= start) && (!end || day <= end) : null;
+    const date =
+      start || end ? until((day) => (!start || day >= start) && (!end || day <= end), end) : null;
     const week = WEEKDAY_CODES.map(() => []);
     for (const schedule of Array.isArray(period?.schedules) ? period.schedules : []) {
       const weekday = Number(schedule?.dayOfWeek);
@@ -377,6 +399,26 @@ export function dayOf(schedule, date, department) {
     holidayClosed: closed && usual.length > 0,
     assumed: true,
   };
+}
+
+/**
+ * The days after a date, one entry each, for the widget: the opening of the
+ * day, or `known: false` past the last published day (`until`).
+ * @returns {{ date: string, known: boolean, slots: object[], holiday: boolean,
+ *   holidayClosed: boolean, assumed: boolean }[]}
+ */
+export function daysAfter(schedule, date, count, department) {
+  const days = [];
+  for (let offset = 1; offset <= count; offset += 1) {
+    const day = addDays(date, offset);
+    const known = Boolean(schedule) && (!schedule.until || day <= schedule.until);
+    days.push(
+      known
+        ? { date: day, known, ...dayOf(schedule, day, department) }
+        : { date: day, known, slots: [], holiday: false, holidayClosed: false, assumed: false },
+    );
+  }
+  return days;
 }
 
 /**
