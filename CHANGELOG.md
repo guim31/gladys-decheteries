@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-01
+
 ### Added
 
 - Widget: a **Days shown** setting (today only by default, as before) shows
@@ -48,6 +50,7 @@ the notes of the version's GitHub Release.
 - Dashboard widget: one row per site, open until when or next opening.
 - Texts and documentation in English, French, German and Spanish.
 
-[Unreleased]: https://github.com/guim31/gladys-decheteries/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/guim31/gladys-decheteries/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/guim31/gladys-decheteries/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/guim31/gladys-decheteries/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/guim31/gladys-decheteries/releases/tag/v1.0.0
